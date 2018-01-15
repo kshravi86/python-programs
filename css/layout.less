@@ -1,0 +1,84 @@
+html {
+  display: block;
+  height: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+
+  text-rendering: optimizelegibility;
+
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  height: 100%;
+
+  position: relative;
+
+  font-family: DroidSans;
+  background-color: @color-purple;
+}
+
+body:after {
+  display: none;
+  content: url(../img/AZlogo.png) url(../img/spiral.png);
+}
+
+#wrapper {
+  min-height: 100%;
+}
+
+@navbar-height: 4.5rem;
+
+#navbar {
+  z-index: 100;
+  -webkit-transform: translateZ(100px);
+
+  position: fixed;
+  height: @navbar-height;
+  background-color: @color-blue;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 2*@_1px solid rgba(255, 255, 255, 0.8);
+
+  .button, .title {
+    height: @navbar-height;
+    line-height: @navbar-height;
+
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+  }
+
+  .button.home {
+    margin-right: 0;
+    border-left: 2*@_1px solid rgba(255, 255, 255, 0.8);
+    float: right;
+  }
+
+  .title {
+    float: left;
+    color: @color-blue2;
+    font-size: 1.5rem;
+    font-family: DroidSansBold;
+    text-shadow: @_1px @_1px @_1px rgba(255, 255, 255, 0.2);
+    padding-right: 0;
+    white-space: nowrap;
+  }
+}
+
+#wrapper > div {
+  display: block;
+  min-height: 100%;
+  .box-sizing;
+  padding-top: @navbar-height+2;
+  padding-bottom: 1rem;
+}
+
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+
+<div class="topcoat-navigation-bar" ng-controller="HomeCtrl">
+<div class="topcoat-navigation-bar__item left quarter">
+<a class="topcoat-icon-button--quiet" ng-click="slidePage('/','modal')">
+<span class="topcoat-icon home-icon"></span>
+</a>
+</div>
+<div class="topcoat-navigation-bar__item center half">
+<h1 class="topcoat-navigation-bar__title">Cake</h1>
+</div>
+</div>
+
+<script type="text/javascript" src="prism.js"></script>
+
+<pre  ng-prism  class="language-java"><code>
+
+
+
+
+// Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
+
+// Example:
+// Given a = 1 and b = 2, return 3.
+
+public class Solution {
+
+    public int getSum(int a, int b) {
+        
+        if(a == 0) return b;
+        if(b == 0) return a;
+        
+        while(b != 0) {
+            
+            int carry = a & b;
+            a = a ^ b;
+            b = carry << 1;
+            
+        }
+        
+        return a;
+        
+    }
+
+}
+
+
+        </code></pre>
+  </body>
+</html>		
+

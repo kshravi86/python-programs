@@ -1,0 +1,52 @@
+.GradientBorder {
+  @border-width: 3*@_1px;
+
+  .gr-border {
+    padding: 1rem;
+    width: @centered-main-width;
+    .box-sizing;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: @color-light-gray;
+    margin-bottom: 1rem;
+
+    color: @color-blue4;
+
+  }
+
+  .bg-image {
+    background-image: linear-gradient(@color-green, transparent), linear-gradient(transparent, @color-pink);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@color-green), to(@color-pink));
+    background-image: -webkit-linear-gradient(@color-green, @color-pink);
+    background-size: @border-width 100%;
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+  }
+
+  .bg-clip {
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+    border: @border-width solid transparent;
+
+    background-image: linear-gradient(@color-light-gray, @color-light-gray), linear-gradient(@color-green, @color-pink);
+    background-image: -webkit-linear-gradient(@color-light-gray, @color-light-gray), -webkit-linear-gradient(@color-green, @color-pink);
+  }
+
+  .two-divs {
+    padding: @border-width;
+
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color-green), color-stop(100%,@color-pink));
+    background: -webkit-linear-gradient(top, @color-green 0%,@color-pink 100%);
+    background: -o-linear-gradient(top, @color-green 0%,@color-pink 100%);
+    background: -ms-linear-gradient(top, @color-green 0%,@color-pink 100%);
+    background: linear-gradient(to bottom, @color-green 0%,@color-pink 100%);
+
+    >div {
+      padding: 1rem;
+      background-color: @color-light-gray;
+      height: 100%;
+    }
+  }
+
+
+}

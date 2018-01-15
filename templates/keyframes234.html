@@ -1,0 +1,288 @@
+<div class="content" style="font-size:1.5em;font-family:Times New Roman;background-color:white;" align="center">
+  
+  <p>Pure JavaScript is Unicode friendly, but it is not so for binary data. While dealing with TCP streams or the file system, it's necessary to handle octet streams. Node provides Buffer class which provides instances to store raw data similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap</p>
+  
+  <br>
+  <p>Buffer class is a global class that can be accessed in an application without importing the buffer module.</p>
+  <br>
+	
+  <p>Creating Buffers</p>
+  <br>
+  <p>Node Buffer can be constructed in a variety of ways.</p>
+  <br>
+  <p>Following is the syntax to create an uninitiated Buffer of 10 octets −</p>
+  <br>
+  <p style="color:red;">
+	var buf = new Buffer(10);
+	
+  </p>
+  
+  <br>
+	
+  <p>Following is the syntax to create a Buffer from a given array −</p>
+  <br>
+  <p style="color:red;">
+	var buf = new Buffer([10, 20, 30, 40, 50]);
+	
+  </p>
+  
+  <br>
+	
+  <p>Writing to Buffers</p>
+  <br>
+	<p style="color:red;">
+	  buf.write(string[, offset][, length][, encoding])</p>
+  
+	  
+	  <br>
+		
+  <p>Here is the description of the parameters used −
+	<br><br>
+
+  string − This is the string data to be written to buffer.<br><br>
+
+  offset − This is the index of the buffer to start writing at. Default value is 0.<br><br>
+
+  length − This is the number of bytes to write. Defaults to buffer.length.<br><br>
+
+	encoding − Encoding to use. 'utf8' is the default encoding.</p>
+	<br>
+		<p>
+		Return Value<br><br>
+		  This method returns the number of octets written. If there is not enough space in the buffer to fit the entire string, it will write a part of the string.</p>
+		  <br>
+			
+  <p style="color:red;">
+	buf = new Buffer(256);<br><br>
+	len = buf.write("Simply Easy Learning");<br><br>
+
+	console.log("Octets written : "+  len);
+	
+	
+  </p>	
+			
+  <br>
+	
+	<p>
+	  When the above program is executed, it produces the following result −</p>
+	    <br>
+		  
+  <p style="color:red;">Octets written : 20</p>
+		
+  
+  <br>
+	
+  <p>Reading from Buffers<br><br>
+  Syntax<br><br>
+	Following is the syntax of the method to read data from a Node Buffer −</p>
+  <p style="color:red;">buf.toString([encoding][, start][, end])</p>
+	<br>
+  <p> Parameters<br><br>
+  Here is the description of the parameters used −<br><br>
+
+  encoding − Encoding to use. 'utf8' is the default encoding.<br><br>
+
+  start − Beginning index to start reading, defaults to 0.<br><br>
+
+	end − End index to end reading, defaults is complete buffer.</p>
+	  
+  <p>Return Value<br><br>
+  This method decodes and returns a string from buffer data encoded using the specified character set encoding.
+
+	Example</p>
+	
+  <p>Convert Buffer to JSON<br><br>
+  Syntax<br><br>
+	Following is the syntax of the method to convert a Node Buffer into JSON object −</p>
+	
+	<br>
+	  
+	  <p style="color:red;">
+		buf.toJSON()</p>
+		
+		<br>
+		  
+  <p>  Return Value<br><br>
+  This method returns a JSON-representation of the Buffer instance.<br><br>
+
+	Example</p>
+	
+  <p style="color:red;">var buf = new Buffer('Simply Easy Learning');<br><br>
+  var json = buf.toJSON(buf);<br><br>
+
+	console.log(json);</p>
+	
+	<br>
+	  
+	  <p>
+	  Concatenate Buffers<br><br>
+	  Syntax<br><br>
+		Following is the syntax of the method to concatenate Node buffers to a single Node Buffer −</p>
+  <p style="color:red;">Buffer.concat(list[, totalLength])</p>
+  
+  <br>
+	<p>
+	Parameters<br><br>
+	Here is the description of the parameters used −<br><br>
+
+	list − Array List of Buffer objects to be concatenated.<br><br>
+
+	totalLength − This is the total length of the buffers when concatenated.<br><br>
+
+	Return Value<br><br>
+	This method returns a Buffer instance.<br><br>
+
+	  Example</p>
+	
+	  
+	  <br>
+		
+  <p style="color:red;">var buffer1 = new Buffer('node ');<br><br>
+  var buffer2 = new Buffer('rocks!');<br><br>
+  var buffer3 = Buffer.concat([buffer1,buffer2]);<br><br>
+  console.log("buffer3 content: " + buffer3.toString());
+	</p>
+	
+	  <br>
+  <p>When the above program is executed, it produces the following result −</p>
+  
+  <br>
+	
+	  <p style="color:red;">
+		buffer3 content:node rocks! </p>
+		
+		<br>
+		  
+  <p>	  Compare Buffers<br><br>
+  Syntax<br><br>
+	Following is the syntax of the method to compare two Node buffers −</p>
+	
+	<br>
+	  
+	  <p style="color:red;">
+		buf.compare(otherBuffer);</p>
+		
+		<br>
+		  
+		  
+  <p>	  Parameters<br>
+  Here is the description of the parameters used −<br>
+
+  otherBuffer − This is the other buffer which will be compared with buf<br>
+
+  Return Value<br>
+  Returns a number indicating whether it comes before or after or is the same as the otherBuffer in sort order.<br>
+  
+
+	Example  </p>
+	
+	<br>
+	  
+	  <p>
+	  Copy Buffer<br>
+	  Syntax<br>
+		Following is the syntax of the method to copy a node buffer −</p>
+		  
+	
+		<p style="color:red;">
+		  buf.copy(targetBuffer[, targetStart][, sourceStart][, sourceEnd])</p>
+		  
+		  <br>
+  <p>Parameters<br><br>
+  Here is the description of the parameters used −<br><br>
+
+  targetBuffer − Buffer object where buffer will be copied.<br><br>
+
+  targetStart − Number, Optional, Default: 0<br><br>
+
+  sourceStart − Number, Optional, Default: 0<br><br>
+
+	sourceEnd − Number, Optional, Default: buffer.length</p>
+	
+	
+  <p>Return Value<br><br>
+  No return value. Copies data from a region of this buffer to a region in the target buffer even if the target memory region overlaps with the source. If undefined, the targetStart and sourceStart parameters default to 0, while sourceEnd defaults to buffer.length.<br><br>
+
+	Example</p>
+	
+	<br>
+	  
+  <p style="color:red;">var buffer1 = new Buffer('ABC');<br><br>
+
+  
+  var buffer2 = new Buffer(3);<br><br>
+  buffer1.copy(buffer2);<br><br>
+  console.log("buffer2 content: " + buffer2.toString());
+</p>
+	<br>
+	  
+  <p>When the above program is executed, it produces the following result −</p>
+  <br>
+  <p style="color:red;">buffer2 content: ABC</p>
+  <br>
+  <p>Slice Buffer<br><br>
+  Syntax<br><br>
+	Following is the syntax of the method to get a sub-buffer of a node buffer −</p>
+	<br>
+  <p style="color:red;">buf.slice([start][, end])</p>
+  <br>
+	
+  <p>Parameters<br><br>
+  Here is the description of the parameters used −<br><br>
+
+  start − Number, Optional, Default: 0<br><br>
+
+  end − Number, Optional, Default: buffer.length<br><br>
+
+  Return Value<br><br>
+  Returns a new buffer which references the same memory as the old one, but offset and cropped by the start (defaults to 0) and end (defaults to buffer.length) indexes. Negative indexes start from the end of the buffer.<br><br>
+
+	Example</p>
+	
+	<br>
+	  
+  <p style="color:red;">var buffer1 = new Buffer('TutorialsPoint');<br><br>
+
+ 
+  var buffer2 = buffer1.slice(0,9);<br><br>
+  console.log("buffer2 content: " + buffer2.toString());<br><br>
+	<br>
+  <p>When the above program is executed,</p>
+  </p>
+  <br>
+	
+  <p style="color:red;">buffer2 content: Tutorials</p>
+		
+  
+  <br>
+	
+	
+  <p>Buffer Length<br><br>
+  Syntax<br><br>
+	Following is the syntax of the method to get a size of a node buffer in bytes −</p>
+	
+	<br>
+	  
+  <p style="color:red;">buf.length;</p>
+  <br>
+  <p>Return Value<br><br>
+  Returns the size of a buffer in bytes.<br><br>
+
+	Example</p>
+	
+	<br>
+  <p style="color:red;">var buffer = new Buffer('TutorialsPoint');<br><br>
+
+
+  console.log("buffer length: " + buffer.length);<br><br>
+	</p>
+	
+	<br>
+	  
+	  
+  <p>When the above program is executed, it produces following result −</p>
+  <br>
+  <p style="color:red;">buffer length: 14</p>
+	  <br>
+		
+</div>

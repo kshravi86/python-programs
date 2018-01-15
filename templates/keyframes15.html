@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+
+	<pre class="language-java"><code>
+import java.util.Optional;
+
+public class Optional1 {
+
+    public static void main(String[] args) {
+        Optional<String> optional = Optional.of("bam");
+
+        optional.isPresent();           // true
+        optional.get();                 // "bam"
+        optional.orElse("fallback");    // "bam"
+
+        optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
+    }
+
+}
+
+
+
+ 
+       </code></pre>
+  </body>
+</html>		
+     

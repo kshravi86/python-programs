@@ -1,0 +1,37 @@
+<div class="Transitions">
+
+    <div class="kit-css-editor wrapped">
+
+        <div class="kit-tip">For dark blue inner div</div>
+
+        <div class="selector-wrapper">
+            <div class="selector">div {</div>
+            <div class="line">
+                <span class="prop-name">-webkit-transition:</span> <span
+                    class="prop-value">width 4s ease-out;</span>
+            </div>
+            <div class="line">
+                <span class="prop-name">width:</span> <span
+                    class="prop-value">0;</span>
+            </div>
+            <div class="selector">}</div>
+        </div>
+
+        <div class="selector-wrapper">
+            <div class="selector">div.transit {</div>
+            <div class="line">
+                <span class="prop-name">-webkit-transition:</span> <span
+                    class="prop-value">width 2s ease-out;</span>
+            </div>
+            <div class="line">
+                <span class="prop-name">width:</span> <span
+                    class="prop-value">100%;</span>
+            </div>
+            <div class="selector">}</div>
+        </div>
+    </div>
+    <div class="kit-title-text title">Click on the progress bar</div>
+    <div class="progress-bar" ng-class="elToTransitClass" hm-tap="triggerTransit()">
+        <div></div>
+    </div>
+</div>

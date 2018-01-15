@@ -1,0 +1,36 @@
+.GradientBackground {
+  .gr-bg {
+    width: @centered-main-width;
+    height: 7rem;
+    line-height: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    font-size: 3rem;
+    color: white;
+    padding-left: 1rem;
+    .box-sizing;
+
+    margin-bottom: 1rem;
+
+    &.top-bottom {
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#227d58), color-stop(100%,#eb5b4c));
+      background: -webkit-linear-gradient(top,  #227d58 0%,#eb5b4c 100%);
+      background: linear-gradient(to bottom,  #227d58 0%,#eb5b4c 100%);
+    }
+
+    &.left-right {
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%,#227d58), color-stop(100%,#eb5b4c));
+      background: -webkit-linear-gradient(left,  #227d58 0%,#eb5b4c 100%);
+      background: linear-gradient(to right,  #227d58 0%,#eb5b4c 100%);
+    }
+
+    &.lefttop-rightbottom {
+      height: 14rem;
+      line-height: 14rem;
+      background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#227d58), color-stop(100%,#eb5b4c));
+      background: -webkit-linear-gradient(-45deg,  #227d58 0%,#eb5b4c 100%);
+      background: linear-gradient(135deg,  #227d58 0%,#eb5b4c 100%);
+    }
+  }
+}

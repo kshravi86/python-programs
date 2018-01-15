@@ -1,0 +1,30 @@
+.Transitions {
+  .title {
+    text-align: center;
+    margin: 1rem 0;
+  }
+  .progress-bar {
+    background-color: @color-light-gray;
+    width: @centered-main-width;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 5*@_1px;
+    overflow: hidden;
+    -webkit-box-shadow: inset 0 @_1px 2*@_1px rgba(0, 0, 0, 0.5);
+
+    > div {
+      -webkit-transition: width 4s ease-out;
+      height: 2rem;
+      background-color: @color-blue4;
+      width: 0;
+    }
+
+    //you can't use :active on android 2.3
+    &.transit {
+      > div {
+        -webkit-transition: width 2s ease-out;
+        width: 100%;
+      }
+    }
+  }
+}

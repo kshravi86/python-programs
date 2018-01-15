@@ -1,0 +1,18 @@
+<div class="Cube">
+    <div class="wrapper">
+        <div class="kit-dark-blue-button" hm-tap="addCube()">Add cube</div>
+        <div class="kit-dark-blue-label">{{cubeCount.length}}</div>
+        <div class="kit-clear-both"></div>
+    </div>
+
+    <div class="wrap" ng-repeat="i in cubeCount">
+        <div class="cube-elem" style="margin-top: {{i*4}}rem;">
+            <div class="side s1"></div>
+            <div class="side s2"></div>
+            <div class="side s3"></div>
+            <div class="side s4"></div>
+            <div class="side s5"></div>
+            <div class="side s6"></div>
+        </div>
+    </div>
+</div>

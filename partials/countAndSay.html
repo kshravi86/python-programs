@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+
+<div class="topcoat-navigation-bar" ng-controller="HomeCtrl">
+<div class="topcoat-navigation-bar__item left quarter">
+<a class="topcoat-icon-button--quiet" ng-click="slidePage('/','modal')">
+<span class="topcoat-icon home-icon"></span>
+</a>
+</div>
+<div class="topcoat-navigation-bar__item center half">
+<h1 class="topcoat-navigation-bar__title">Cake</h1>
+</div>
+</div>
+
+<script type="text/javascript" src="prism.js"></script>
+
+<pre  ng-prism  class="language-java"><code>
+
+
+
+
+
+
+// The count-and-say sequence is the sequence of integers beginning as follows:
+// 1, 11, 21, 1211, 111221, ...
+
+// 1 is read off as "one 1" or 11.
+// 11 is read off as "two 1s" or 21.
+// 21 is read off as "one 2, then one 1" or 1211.
+// Given an integer n, generate the nth sequence.
+
+// Note: The sequence of integers will be represented as a string.
+
+public class Solution {
+
+    public String countAndSay(int n) {
+        
+        String s = "1";
+        for(int i = 1; i < n; i++) {
+            
+            s = helper(s);
+            
+        }
+        
+        return s;
+        
+    }
+    
+    
+    public String helper(String s) {
+        
+        StringBuilder sb = new StringBuilder();
+        char c = s.charAt(0);
+        int count = 1;
+        
+        for(int i = 1; i < s.length(); i++) {
+            
+            if(s.charAt(i) == c) count++;
+            
+            else {
+                
+                sb.append(count);
+                sb.append(c);
+                c = s.charAt(i);
+                count = 1;
+                
+            }
+            
+        }
+        
+        sb.append(count);
+        sb.append(c);
+        return sb.toString();
+        
+    }
+    
+}
+
+
+        </code></pre>
+  </body>
+</html>		

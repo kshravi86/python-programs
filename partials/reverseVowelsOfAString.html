@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+
+<div class="topcoat-navigation-bar" ng-controller="HomeCtrl">
+<div class="topcoat-navigation-bar__item left quarter">
+<a class="topcoat-icon-button--quiet" ng-click="slidePage('/','modal')">
+<span class="topcoat-icon home-icon"></span>
+</a>
+</div>
+<div class="topcoat-navigation-bar__item center half">
+<h1 class="topcoat-navigation-bar__title">Cake</h1>
+</div>
+</div>
+
+<script type="text/javascript" src="prism.js"></script>
+
+<pre  ng-prism  class="language-java"><code>
+
+
+
+
+
+
+// Write a function that takes a string as input and reverse only the vowels of a string.
+
+// Example 1:
+// Given s = "hello", return "holle".
+
+// Example 2:
+// Given s = "leetcode", return "leotcede".
+
+// Note:
+// The vowels does not include the letter "y".
+
+public class Solution {
+
+    public String reverseVowels(String s) {
+        
+        if(s == null || s.length() == 0) return s;
+        
+        String vowels = "aeiouAEIOU";
+        
+        char[] chars = s.toCharArray();
+        
+        int start = 0;
+        int end = s.length() - 1;
+        
+        while(start < end) {
+            
+            while(start < end && !vowels.contains(chars[start] + "")) {
+                
+                start++;
+                
+            }
+            
+            while(start < end && !vowels.contains(chars[end] + "")) {
+                
+                end--;
+                
+            }
+            
+            
+            char temp = chars[start];
+            chars[start] = chars[end];
+            chars[end] = temp;
+            
+            start++;
+            end--;
+            
+        }
+        
+        return new String(chars);
+        
+    }
+
+}
+
+
+
+        </code></pre>
+  </body>
+</html>		

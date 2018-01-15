@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+
+<div class="topcoat-navigation-bar" ng-controller="HomeCtrl">
+<div class="topcoat-navigation-bar__item left quarter">
+<a class="topcoat-icon-button--quiet" ng-click="slidePage('/','modal')">
+<span class="topcoat-icon home-icon"></span>
+</a>
+</div>
+<div class="topcoat-navigation-bar__item center half">
+<h1 class="topcoat-navigation-bar__title">Cake</h1>
+</div>
+</div>
+
+<script type="text/javascript" src="prism.js"></script>
+
+<pre  ng-prism  class="language-java"><code>
+
+
+
+
+// Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1's in their binary representation and return them as an array.
+
+// Example:
+// For num = 5 you should return [0,1,1,2,1,2].
+
+public class Solution {
+    public int[] countBits(int num) {
+        
+        int[] bits = new int[num + 1];
+        
+        bits[0] = 0;
+        
+        for(int i = 1; i <= num; i++) {
+            
+            bits[i] = bits[i >> 1] + (i & 1);
+            
+        }
+        
+        return bits;
+        
+    }
+
+}
+
+
+
+    
+        </code></pre>
+  </body>
+</html>		

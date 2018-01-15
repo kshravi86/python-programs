@@ -1,0 +1,44 @@
+/***************************
+* Author : Haris zaharakis *
+* Created : 19.3.2017      *
+* Updated : 25.3.2017      *
+***************************/
+
+body 
+{
+    background-color: #07E9D4;
+    font-weight: lighter;
+    font-family: serif;
+    text-align: left;
+}
+
+table
+{
+    width: 300px;
+    height: 300px;
+    background-color: black;
+    text-align: center; 
+}
+
+div
+{
+    width: 90;
+    height: 30px;
+    border-radius: 7px;
+    background-color: white;
+    font-weight: bolder;
+    font-family: serif;
+    text-align: center;
+    color: black;
+}
+
+button
+{
+    width: 80%;
+    height: 80%;
+    border-radius: 7px;
+    background-color: grey;
+    font-weight: bolder;
+    font-family: serif;
+    color: white;
+}

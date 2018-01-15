@@ -1,0 +1,158 @@
+@font-face {
+  font-family: DroidSans;
+  src: url("../fonts/DroidSans.ttf");
+}
+
+@font-face {
+  font-family: DroidSansBold;
+  src: url("../fonts/DroidSans-Bold.ttf");
+}
+
+@color-blue: rgb(63, 103, 192);
+@color-blue2: rgb(53, 181, 235);
+@color-blue3: rgb(82, 121, 201);
+@color-blue4: rgb(14, 17, 42);
+@color-purple: rgb(45, 40, 104);
+@color-light-gray: rgb(225, 226, 233);
+@color-dark-gray: rgb(120, 120, 120);
+@color-pink: rgb(235, 91, 76);
+@color-green: rgb(34, 125, 88);
+
+@centered-main-width: 86%;
+
+.kit-title-text {
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+.kit-active {
+  &:active {
+    background-color: @color-blue2;
+  }
+}
+
+.kit-dropdown-button {
+  margin-left: auto;
+  margin-right: auto;
+  .box-sizing;
+  position: relative;
+  width: @centered-main-width;
+  background-color: @color-blue;
+
+  .button {
+    .kit-active;
+    .kit-title-text;
+    padding: 1rem;
+    border-bottom: 2*@_1px solid @color-blue3;
+  }
+
+  &.closed .button {
+    border-bottom: none;
+  }
+
+  .content {
+    font-size: 1.2rem;
+    overflow: hidden;
+    padding: 1rem;
+    color: white;
+    opacity: 1;
+  }
+
+  &.closed .content {
+    display: none;
+  }
+}
+
+.kit-dark-blue-button-not-active{
+  display: inline-block;
+  padding: 1rem;
+  background-color: @color-blue4;
+  .kit-title-text;
+}
+
+.kit-dark-blue-button {
+  .kit-dark-blue-button-not-active;
+  .kit-active;
+}
+
+
+
+.kit-dark-blue-label {
+  .kit-title-text;
+  display: inline-block;
+  padding: 1rem;
+  background-color: @color-blue4;
+
+  height: 1.5rem;
+  width: 1.5rem;
+  text-align: center;
+  border-radius: 100%;
+}
+
+.kit-clear-both {
+  clear: both;
+}
+
+.kit-css-editor {
+  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+  font-size: 1.1rem;
+
+  .line {
+    padding-left: 1rem;
+    text-indent: -1em;
+  }
+  .prop-name {
+    color: rgb(0, 0, 255);
+  }
+
+  .prop-value {
+    color: rgb(57, 127, 57);
+  }
+
+  .selector-wrapper {
+    color: rgb(0, 0, 255);
+    padding: 0 1rem;
+    .selector {
+      text-indent: -1em;
+    }
+  }
+
+  &.wrapped {
+    padding: 1rem;
+    background-color: @color-light-gray;
+    width: @centered-main-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.kit-link {
+  font-family: DroidSansBold;
+  text-decoration: underline;
+  color: @color-blue4;
+}
+
+.kit-nobr {
+  white-space: nowrap;
+}
+
+.kit-tip {
+  color: @color-blue4;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.kit-text-input {
+  background-color: white;
+  color: #b3b3b3;
+  padding: 1.2rem 1.5rem;
+  border-top: @_1px solid #808080;
+  border-width: @_1px 0;
+  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+  width: 100%;
+  margin: 0;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
