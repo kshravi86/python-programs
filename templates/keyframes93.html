@@ -1,83 +1,70 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-
-
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-/*Gem Stones
 
-John has discovered various rocks. Each rock is composed of various elements, and each element is 
-represented by a lower-case Latin letter from 'a' to 'z'. An element can be present multiple times in a rock. An element is called a gem-element if it occurs at least once in each of the rocks.
+"""
+Given a binary tree, find its maximum depth.
 
-Given the list of N rocks with their compositions, display the number of gem-elements that exist in those rocks.
+The maximum depth is the number of nodes along the
+longest path from the root node down to the farthest leaf node.
+"""
 
-Input Format
 
-The first line consists of an integer, N, the number of rocks. 
-Each of the next N lines contains a rock's composition. Each composition consists of lower-case 
-letters of English alphabet.
+class Node():
+    def __init__(self, val = 0):
+        self.val = val
+        self.left = None
+        self.right = None
 
-Constraints 
-1≤N≤100 
-Each composition consists of only lower-case Latin letters ('a'-'z'). 
-1≤ length of each composition ≤100
-Output Format
+# def max_height(root):
+    # if not root:
+        # return 0
+    # return max(maxDepth(root.left), maxDepth(root.right)) + 1
 
-Print the number of gem-elements that are common in these rocks. If there are none, print 0.
+# iterative
+def max_height(root):
+    if not root:
+        return 0
+    height = 0
+    queue = [root]
+    while queue:
+        height += 1
+        level = []
+        while queue:
+            node = queue.pop(0)
+            if node.left:
+                level.append(node.left)
+            if node.right:
+                level.append(node.right)
+        queue = level
+    return height
 
-Sample Input
+def print_tree(root):
+    if root:
+        print(root.val)
+        print_tree(root.left)
+        print_tree(root.right)
 
-3
-abcdde
-baccd
-eeabg
+tree = Node(10)
+tree.left = Node(12)
+tree.right = Node(15)
+tree.left.left  = Node(25)
+tree.left.left.right  = Node(100)
+tree.left.right = Node(30)
+tree.right.left = Node(36)
 
-Sample Output
-
-2
-*/
-
-import java.io.*;
-import java.util.*;
-
-public class GemStones {
-
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-        Map&ltString, Integer&gt dict = new HashMap&ltString, Integer&gt();
-        int numTestCases = Integer.parseInt(sc.nextLine());
-        for(int i = 0;i&ltnumTestCases;i++){
-            String word = sc.nextLine();
-            for(int j = 0; j&ltword.length();j++){
-                if(i==0){
-                    dict.put(""+word.charAt(j),new Integer(1));
-                }else{
-                    Integer val = dict.get(""+word.charAt(j));
-                    if(val != null && val == i){
-                        val+=1;
-                        dict.put(""+word.charAt(j),val);
-                    }
-                }
-            }
-            
-        }
-        int count = 0;
-        for(Integer val:dict.values()){
-            if(val == numTestCases) count++;
-        }
-        System.out.println(count);
-    }
-}
+height = max_height(tree)
+print_tree(tree)
+print("height:", height)
 
 </code></pre>
   </body>

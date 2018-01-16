@@ -1,92 +1,69 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
 
 
+"""
+    Queue
+    -----
+    A Queue is a linear data structure, or more abstractly a sequential
+    collection. The entities in the collection are kept in order and the
+    principal (or only) operations on the collection are the addition of
+    entities to the rear terminal position, known as enqueue, and removal of
+    entities from the front terminal position, known as dequeue. This makes the
+    queue a First-In-First-Out (FIFO) data structure. In a FIFO data structure,
+    the first element added to the queue will be the first one to be removed.
+
+    Pseudo Code: https://en.wikipedia.org/wiki/Queue_%28abstract_data_type%29
+"""
+from collections import deque
 
 
-/* Java Map
+class Queue:
 
-You are given a phone book that consists of people's names and their phone number. After that you will 
-be given some person's name as query. For each query, print the phone number of that person.
+    def __init__(self):
+        self._queue = deque([])
 
-Input Format
+    def add(self, value):
+        """
+        Add element as the last item in the Queue.
 
-The first line will have an integer n denoting the number of entries in the phone book. Each entry consists of 
-two lines: a name and the corresponding phone number. 
+        Worst Case Complexity:  O(1)
+        """
+        self._queue.append(value)
 
-After these, there will be some queries. Each query will contain a person's name. Read the queries until end-of-file.
+    def remove(self):
+        """
+        Remove element from the front of the Queue and return it's value.
 
-Constraints:
-A person's name consists of only lower-case English letters and it may be in the format 'first-name last-name' 
-or in the format 'first-name'. Each phone number has exactly 8 digits without any leading zeros.
+        Worst Case Complexity:  O(1)
+        """
 
-1≤n≤100000
-1≤Query≤100000
+        return self._queue.popleft()
 
-Output Format
+    def is_empty(self):
+        """
+        Returns a boolean indicating if the Queue is empty.
 
-For each case, print "Not found" if the person has no entry in the phone book. Otherwise, print the person's 
-name and phone number. See sample output for the exact format.
+        Worst Case Complexity:  O(1)
+        """
+        return not len(self._queue)
 
-To make the problem easier, we provided a portion of the code in the editor. You can either complete that code 
-or write completely on your own.
+    def size(self):
+        """
+        Return size of the Queue.
 
-Sample Input
-
-3
-uncle sam
-99912222
-tom
-11122222
-harry
-12299933
-uncle sam
-uncle tom
-harry
-
-Sample Output
-
-uncle sam=99912222
-Not found
-harry=12299933
-*/
-
-import java.util.*;
-import java.io.*;
-
-class JavaMap{
-   public static void main(String []argh)
-   {
-      Map database = new HashMap();
-      Scanner in = new Scanner(System.in);
-      int n=in.nextInt();
-      in.nextLine();
-      for(int i=0;i&ltn;i++)
-      {
-         String name=in.nextLine();
-         int phone=in.nextInt();
-         database.put(name,""+phone);
-         in.nextLine();
-      }
-      while(in.hasNext())
-      {
-         String s=in.nextLine();
-         String phone = (String)database.get(s); 
-         System.out.println(phone==null?"Not found":s+"="+phone);
-      }
-   }
-}
-
-
+        Worst Case Complexity:  O(1)
+        """
+        return len(self._queue)
+        
+        
         </code></pre>
   </body>
 </html>		

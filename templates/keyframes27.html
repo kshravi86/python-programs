@@ -1,47 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
 
 
+"""
+    Stack
+    -----
+    A stack or LIFO (last in, first out) is an abstract data type that serves
+    as a collection of elements, with two principal operations: push, which
+    adds an element to the collection, and pop, which removes the last element
+    that was added.
 
-/* Java Generics
+    Pseudo Code: https://en.wikipedia.org/wiki/Stack_%28abstract_data_type%29
+"""
 
-Generic methods are a very efficient way to handle multiple datatypes using a single method. 
-This problem will test your knowledge on Java Generic methods.
 
-Let's say you have an integer array and a string array. You have to write a single method printArray 
-that can print all the elements of both arrays. The method should be able to accept both integer arrays or string arrays.
+class Stack:
 
-You are given code in the editor. Complete the code so that it prints the following lines:
+    def __init__(self):
+        self.stack_list = []
 
-1
-2
-3
-Hello
-World
-Do not use method overloading because your answer will not be accepted.
+    def add(self, value):
+        """
+        Add element at last
 
-*/
+        Time Complexity:  O(1)
+        """
+        self.stack_list.append(value)
 
-class Printer
-{
-    public static void printArray(Object[] arr)
-    {
-        for(int i = 0;i&ltarr.length;i++){
-            System.out.println(""+arr[i]); 
-        }
+    def remove(self):
+        """
+        Remove element from last return value
+
+        Time Complexity:  O(1)
+        """
+
+        return self.stack_list.pop()
+
+    def is_empty(self):
+        """
+        1 value returned on empty 0 value returned on not empty
+
+        Time Complexity:  O(1)
+        """
+        return not self.size()
+
+    def size(self):
+        """
+        Return size of stack
+
+        Time Complexity:  O(1)
+        """
+        return len(self.stack_list)
         
-    }
-}
-
-</code></pre>
+        </code></pre>
   </body>
 </html>		
+        

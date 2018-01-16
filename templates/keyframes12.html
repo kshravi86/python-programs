@@ -1,98 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
-<pre class="language-java"><code>
+"""
+    Quick Sort
+    ----------
+    Uses partitioning to recursively divide and sort the list
 
+    Time Complexity: O(n**2) worst case
 
+    Space Complexity: O(n**2) this version
 
+    Stable: No
 
-/*
-Java BigDecimal
+    Psuedo Code: CLRS. Introduction to Algorithms. 3rd ed.
 
-Java BigDecimal class can handle arbitrary-precision signed decimal numbers. Lets test your knowledge on them!
-
-You are given n real numbers, sort them in descending order! Read data from System.in.
-
-Note: To make the problem easier, we provided you the input/output part in the editor. Print the numbers as 
-they appeared in the input, don't change anything. If two numbers represent numerically equivalent values, 
-the output must list them in original order of the input.
-
-Input Format
-
-The first line will consist an integer n, each of the next n lines will contain a real number. n will be at most 200. 
-The numbers can have at most 300 digits!
-
-Output Format
-
-Print the numbers in descending orders, one number in each line.
-
-Sample Input
-
-9
--100
-50
-0
-56.6
-90
-0.12
-.12
-02.34
-000.000
-
-Sample Output
-
-90
-56.6
-50
-02.34
-0.12
-.12
-0
-000.000
--100
-*/
+"""
 
 
-import java.math.BigDecimal;
-import java.util.*;
+def sort(seq):
+    """
+    Takes a list of integers and sorts them in ascending order. This sorted
+    list is then returned.
 
-class JavaBigDecimal{
+    :param seq: A list of integers
+    :rtype: A list of sorted integers
+    """
+    if len(seq) <= 1:
+        return seq
+    else:
+        pivot = seq[0]
+        left, right = [], []
+        for x in seq[1:]:
+            if x < pivot:
+                left.append(x)
+            else:
+                right.append(x)
+        return sort(left) + [pivot] + sort(right)
+		
 
-    public static void main(String []argh)
-    {
-        Scanner sc= new Scanner(System.in);
-        int n=sc.nextInt();
-        String []s=new String[n];
-       
-        for(int i=0;i&ltn;i++)
-        {
-            s[i] = sc.next();
-        }
-       
-       Arrays.sort(s, new Comparator&ltObject&gt() {
-       @Override
-       public int compare(Object a1, Object a2) {
-           BigDecimal bigDec1 = new BigDecimal((String)a1);
-           BigDecimal bigDec2 = new BigDecimal((String)a2);
-           return bigDec2.compareTo(bigDec1);
-       }
-       });
-        
-        for(int i=0;i&ltn;i++)
-        {
-            System.out.println(s[i]);
-        }
-
-    }
-
-
-}
-
- </code></pre>
+	
+</code></pre>
   </body>
 </html>		

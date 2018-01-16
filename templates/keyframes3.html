@@ -1,75 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-
-
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
+"""
+    Binary Search
+    -------------
+    Recursively partitions the list until the `key` is found.
+
+    Time Complexity:  O(lg n)
+
+    Psuedo Code: http://en.wikipedia.org/wiki/Binary_search
+
+"""
 
 
-/* Ice Cream Parlor
+def search(seq, key):
+    """
+    Takes a list of integers and searches if the `key` is contained within
+    the list.
 
-Sunny and Johnny together have M dollars they want to spend on ice cream. The parlor offers N flavors, and they want to choose two flavors so that they end up spending the whole amount.
+    :param seq: A list of integers
+    :param key: The integer to be searched for
+    :rtype: The index of where the `key` is located in the list. If `key` is
+            not found then False is returned.
+    """
 
-You are given the cost of these flavors. The cost of the ith flavor is denoted by ci. You have to display the indices of the two flavors whose sum is M.
+    lo = 0
+    hi = len(seq) - 1
 
-Input Format
-
-The first line of the input contains T; T test cases follow. 
-Each test case follows the format detailed below: The first line contains M. The second line contains N. The third line contains N space-separated integers denoting the price of each flavor. Here, the ith integer denotes ci.
-
-Output Format
-
-Output two integers, each of which is a valid index of a flavor. The lower index must be printed first. Indices are indexed from 1 to N.
-
-*/
-
-import java.io.*;
-import java.util.*;
-
-public class IceCreamParlor {
-
-    public static void printCombination(ArrayList listArray, int money)
-    {
-        int startPos = 0;
-        while(startPos&ltlistArray.size()-1){
-            for(int i = startPos+1;i&ltlistArray.size();i++){
-                int sum = (int) listArray.get(startPos)+(int) listArray.get(i);
-                if(sum == money){
-                    System.out.println((startPos+1)+" "+(i+1));
-                    return;
-                }
-            }
-            startPos++;
-        }
-     
-    }
-    public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner sc = new Scanner(System.in);
-        int numTestCases = sc.nextInt();
-        
-        for(int i = 0;i&ltnumTestCases;i++){
-            int money = sc.nextInt();
-            int numFlavors = sc.nextInt();
-            ArrayList&ltInteger&gt costArrayList = new ArrayList<Integer>();
-            for(int j = 0; j&ltnumFlavors;j++){
-                costArrayList.add(sc.nextInt());
-            }
-            printCombination(costArrayList,money);
-            
-        }
-    }
-}
-
-
- </code></pre>
+    while hi >= lo:
+        mid = lo + (hi - lo) // 2
+        if seq[mid] < key:
+            lo = mid + 1
+        elif seq[mid] > key:
+            hi = mid - 1
+        else:
+            return mid
+    return False
+	
+	
+</code></pre>
   </body>
 </html>		

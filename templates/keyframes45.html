@@ -1,61 +1,45 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
-<pre class="language-java"><code>
 
 
+# Time:  O(n)
+# Space: O(1)
+#
+# Given an integer, convert it to a roman numeral.
+# 
+# Input is guaranteed to be within the range from 1 to 3999.
+#
 
 
-/* Staircase
-Your teacher has given you the task to draw the structure of a staircase. Being an expert programmer, you decided to make a program for the same. You are given the height of the staircase. You need to print a staircase as shown in the example.
-
-Input Format
-
-You are given an integer N depicting the height of the staircase.
-
-Constraints 
-1≤N≤100
-Output Format
-
-Draw a staircase of height N in the format given below.
-
-For example:
-
-     #
-    ##
-   ###
-  ####
- #####
-######
-Staircase of height 6, note that last line has 0 spaces before it.
-*/
-
-import java.io.*;
-import java.util.*;
-
-public class Solution {
-
-    public static void main(String[] args) {
-    
-        Scanner sc = new Scanner(System.in);
-        int num  = Integer.parseInt(sc.nextLine());
-        for(int j=0;j&ltnum;j++){
-            for(int i=1;i&lt=num;i++){
-                System.out.print(i&ltnum-j?" ":"#");
-            }
-            System.out.println("");
-        }
+class Solution:
+    # @return a string
+    def intToRoman(self, num):
+        numeral_map = {1: "I", 4: "IV", 5: "V", 9: "IX", 10: "X", 40: "XL", 50: "L", 90: "XC", 100: "C", 400: "CD", 500: "D", 900: "CM", 1000: "M"}
+        keyset, result = sorted(numeral_map.keys()), ""
         
-    }
-}
+        while num > 0:
+            for key in reversed(keyset):
+                while num / key > 0:
+                    num -= key
+                    result += numeral_map[key]
+                    
+        return result
 
-
- </code></pre>
+if __name__ == "__main__":
+    print Solution().intToRoman(999)
+    print Solution().intToRoman(3999)
+    
+    
+   </code></pre>
   </body>
-</html>		
+</html>		 
+    

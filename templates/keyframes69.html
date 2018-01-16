@@ -1,89 +1,66 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-
-
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
 
 
-//https://www.hackerrank.com/challenges/beautiful-binary-string
-/*
- Alice has a binary string, B, of length n. She thinks a binary string is beautiful if and only if it doesn't contain the substring "010".
+# Time:  O(n)
+# Space: O(n)
 
- In one step, Alice can change a 0 to a 1 (or vice-versa). Count and print the minimum number of steps needed to make Alice see the string as beautiful.
+# Given an array of integers, return indices of the two numbers
+# such that they add up to a specific target.
+#
+# You may assume that each input would have exactly one solution.
+#
+# Example:
+# Given nums = [2, 7, 11, 15], target = 9,
+#
+# Because nums[0] + nums[1] = 2 + 7 = 9,
+# return [0, 1].
 
- Input Format
 
- The first line contains an integer, (the length of binary string B).
- The second line contains a single binary string, B, of length n.
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        lookup = {}
+        for i, num in enumerate(nums):
+            if target - num in lookup:
+                return [lookup[target - num], i]
+            lookup[num] = i
+        return []
 
- Constraints
+    def twoSum2(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        k = 0
+        for i in nums:
+            j = target - i
+            k += 1
+            tmp_nums = nums[k:]
+            if j in tmp_nums:
+                return [k - 1, tmp_nums.index(j) + k]
 
- 1 <= n <= 100
- Each character in B belongs to {1,2} .
 
- Output Format
-
- Print the minimum number of steps needed to make the string beautiful.
-
- Sample Input 0
-
- 7
- 0101010
-
- Sample Output 0
-
- 2
-
- Sample Input 1
-
- 5
- 01100
-
- Sample Output 1
-
- 0
-
- Sample Input 2
-
- 10
- 0100101010
-
- Sample Output 2
-
- 3
- */
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-public class BeautifulBinaryString {
-	public static void main(String[] args) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int count = 0;
-		final int n = Integer.parseInt(br.readLine());
-		String str = br.readLine();
-		final String stringToBeFound = "010";
-		int lastIndex = 0;
-		while (lastIndex != -1) {
-			lastIndex = str.indexOf(stringToBeFound, lastIndex);
-			if (lastIndex != -1) {
-				count++;
-				lastIndex += stringToBeFound.length();
-			}
-		}
-		System.out.println(count);
-	}
-}
-
-  </code></pre>
+if __name__ == '__main__':
+    print Solution().twoSum((2, 7, 11, 15), 9)
+    
+    
+    
+    </code></pre>
   </body>
 </html>		

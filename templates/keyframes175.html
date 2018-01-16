@@ -1,66 +1,53 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
 
-<pre class="language-java"><code>
-
-
+	<pre class="language-python"><code>
 
 
 
 
-/* Flowers
-You and your K-1 friends want to buy N flowers. Flower number i has cost ci. Unfortunately the seller does not want just one customer to buy a lot of flowers, so he tries to change the price of flowers for customers who have already bought some flowers. More precisely, if a customer has already bought x flowers, he should pay (x+1)*ci dollars to buy flower number i.
-You and your K-1 friends want to buy all N flowers in such a way that you spend the least amount of money. You can buy the flowers in any order.
-
-Input:
-
-The first line of input contains two integers N and K (K &lt= N). The next line contains N space separated positive integers c1,c2,...,cN.
-
-Output:
-
-Print the minimum amount of money you (and your friends) have to pay in order to buy all N flowers.
-*/
 
 
-import java.io.*;
-import java.util.*;
+from __future__ import print_function
 
-public class Flowers {
+def rangoli(iterations, space='-'):
+    result = []
+    starting = ord('a') + iterations - 1
+    width = (iterations - 1) * 4 + 1
 
-    public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner sc = new Scanner(System.in);
-        ArrayList &ltInteger&gt flowerPriceList = new ArrayList&ltInteger&gt();
-        int numFlowers = sc.nextInt();
-        int numFriends = sc.nextInt();
-        for(int i = 0; i&ltnumFlowers;i++){
-            flowerPriceList.add(sc.nextInt());
-        }
-		// Sort the ArrayList in reverse order to start bying flowers from most expensive
-        Collections.sort(flowerPriceList,Collections.reverseOrder());
-        int flowersBought = 0;
-        int friendNum = 0;
-        int total = 0;
-        for(int price:flowerPriceList){
-			//itterate throught all the flower prices and calculate the total
-            total +=(flowersBought+1)*price;
-            friendNum++;
-            if(friendNum == numFriends){
-				//if all friends bought flowers reset the friend counter and restart the cycle
-                friendNum = 0;
-                flowersBought++;
-            }
-        }
-        System.out.println(total);
-    }
-}
+    if iterations == 1:
+        return ['a']
+    elif iterations <= 0:
+        return []
 
- </code></pre>
+    for i in range(iterations):
+        row = []
+        curr = 0
+        while curr <= i:
+            row.append(chr(starting - curr))
+            row.append(space)
+            curr += 1
+        row.extend(list(reversed(row[:-3])))
+        result.append(''.join(row).center(width, space))
+
+    result.extend(list(reversed(result[:-1])))
+    return result
+
+def main():
+    for line in rangoli(int(input())):
+        print(line)
+
+if __name__ == '__main__':
+    main()
+    
+    
+    
+        </code></pre>
   </body>
 </html>		

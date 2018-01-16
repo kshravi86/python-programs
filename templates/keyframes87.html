@@ -1,68 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
-<pre class="language-java"><code>
+
+"""
+Given a sorted integer array without duplicates,
+return the summary of its ranges.
+
+For example, given [0,1,2,4,5,7], return ["0->2","4->5","7"].
+"""
 
 
-
-
-/* Alternating Characters
-Shashank likes strings in which consecutive characters are different. For example, he likes ABABA, while he doesn't like ABAA. Given a string containing characters A and B only, he wants to change it into a string he likes. To do this, he is allowed to delete the characters in the string.
-
-Your task is to find the minimum number of required deletions.
-
-Input Format
-
-The first line contains an integer T, i.e. the number of test cases. 
-The next T lines contain a string each.
-
-Output Format
-
-For each test case, print the minimum number of deletions required.
-
-Constraints
-
-1≤T≤10 
-1≤ length of string ≤10^5
-*/
-
-import java.io.*;
-import java.util.*;
-
-public class AlternatingCharacters {
-
-    public static int consecutiveChars(String str)
-    {
-        StringBuilder mutableStr = new StringBuilder(str);
-        int numDeletions = 0;
-        int pos = 0;
-        while(pos&ltmutableStr.length()-1){
-            if(mutableStr.charAt(pos)==mutableStr.charAt(pos+1)){
-                mutableStr.deleteCharAt(pos);
-                numDeletions++;
-            }else{
-                pos++;
-            }
-        }
-        
-        
-        return numDeletions;
-    }
-    public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner sc = new Scanner(System.in);
-        int numCases = Integer.parseInt(sc.nextLine());
-        for(int i=0;i&ltnumCases;i++){
-            System.out.println(consecutiveChars(sc.nextLine()));
-        }
-    }
-}
-
-</code></pre>
+def summary_ranges(nums):
+    """
+    :type nums: List[int]
+    :rtype: List[str]
+    """
+    res = []
+    if len(nums) == 1:
+        return [str(nums[0])]
+    i = 0
+    while i < len(nums):
+        num = nums[i]
+        while i+1 < len(nums) and nums[i+1] - nums[i] == 1:
+            i += 1
+        if nums[i] != num:
+            res.append(str(num) + "->" + str(nums[i]))
+        else:
+            res.append(str(num))
+        i += 1
+    return res
+    
+    
+    
+        </code></pre>
   </body>
 </html>		

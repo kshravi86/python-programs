@@ -1,81 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-
-
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-/* Chocolate Feast
+# Time:  O(logn)
+# Space: O(1)
 
-Little Bob loves chocolate, and he goes to a store with $N in his pocket. The price of each chocolate is $C. The store offers a discount: for every M wrappers he gives to the store, he gets one chocolate for free. How many chocolates does Bob get to eat?
+# Find the nth digit of the infinite integer sequence
+# 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
+#
+# Note:
+# n is positive and will fit within the range of a 32-bit signed integer (n < 231).
+#
+# Example 1:
+#
+# Input:
+# 3
+#
+# Output:
+# 3
+# Example 2:
+#
+# Input:
+# 11
+#
+# Output:
+# 0
+#
+# Explanation:
+# The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+# ... is a 0, which is part of the number 10.
 
-Input Format: 
-The first line contains the number of test cases, T. 
-T lines follow, each of which contains three integers, N, C, and M.
+class Solution(object):
+    def findNthDigit(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        digit_len = 1
+        while n > digit_len * 9 * (10 ** (digit_len-1)):
+            n -= digit_len  * 9 * (10 ** (digit_len-1))
+            digit_len += 1
 
-Output Format: 
-Print the total number of chocolates Bob eats.
+        num = 10 ** (digit_len-1) + (n-1)/digit_len
 
-Constraints: 
-1≤T≤1000 
-2≤N≤105 
-1≤C≤N 
-2≤M≤N
+        nth_digit = num / (10 ** ((digit_len-1) - ((n-1)%digit_len)))
+        nth_digit %= 10
 
-Sample input
-
-3
-10 2 5
-12 4 4
-6 2 2
-Sample Output
-
-6
-3
-5
-
-*/
-
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-
-public class ChocolateFeast {
-
-    public static void main(String[] args) 
-    {
-        Scanner in = new Scanner(System.in);
-        int t = in.nextInt();
-        for(int i = 0; i < t; i++){
-            System.out.println(Solve(in.nextInt(), in.nextInt(), in.nextInt()));
-        }
-    }
-    
-    private static long Solve(int N, int C, int M){
+        return nth_digit
         
-        int candyAte = (int)N/C;
-        int wrappersLeft = candyAte;
-        int candyAteNow = 0;
-        do{
-            candyAteNow = (int)wrappersLeft/M;
-            candyAte+=candyAteNow;
-            wrappersLeft=candyAteNow+(wrappersLeft%M);
-            
-        }while(candyAteNow>0);
-        return candyAte;
-    }
-}
-
-
-</code></pre>
+        
+        </code></pre>
   </body>
 </html>		

@@ -1,111 +1,79 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-
-
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
+# Time:  O(logn) = O(1)
+# Space: O(1)
+#
+# Reverse digits of an integer.
+# 
+# Example1: x = 123, return 321
+# Example2: x = -123, return -321
+# 
+# click to show spoilers.
+# 
+# Have you thought about this?
+# Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!
+# 
+# If the integer's last digit is 0, what should the output be? ie, cases such as 10, 100.
+# 
+# Did you notice that the reversed integer might overflow? Assume the input is a 32-bit integer, 
+# then the reverse of 1000000003 overflows. How should you handle such cases?
+# 
+# Throw an exception? Good, but what if throwing an exception is not an option? 
+# You would then have to re-design the function (ie, add an extra parameter).
 
 
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        if x < 0:
+            return -self.reverse(-x)
 
-/* Cut The Sticks
+        result = 0
+        while x:
+            result = result * 10 + x % 10
+            x /= 10
+        return result if result <= 0x7fffffff else 0  # Handle overflow.
 
-You are given N sticks, where the length of each stick is a positive integer. A cut operation is performed on the sticks such that all of them are reduced by the length of the smallest stick.
+    def reverse2(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        if x < 0:
+            x = int(str(x)[::-1][-1] + str(x)[::-1][:-1])
+        else:
+            x = int(str(x)[::-1])
+        x = 0 if abs(x) > 0x7FFFFFFF else x
+        return x
 
-Suppose we have six sticks of the following lengths:
+    def reverse3(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        s = cmp(x, 0)
+        r = int(`s * x`[::-1])
+        return s * r * (r < 2 ** 31)
 
-5 4 4 2 2 8
-Then, in one cut operation we make a cut of length 2 from each of the six sticks. For the next cut 
-operation four sticks are left (of non-zero length), whose lengths are the following:
 
-3 2 2 6
-The above step is repeated until no sticks are left.
-
-Given the length of N sticks, print the number of sticks that are left before each subsequent cut operations.
-
-Note: For each cut operation, you have to recalcuate the length of smallest sticks (excluding zero-length sticks).
-
-Input Format 
-The first line contains a single integer N. 
-The next line contains N integers: a0, a1,...aN-1 separated by space, where ai represents the length of ith stick.
-
-Output Format 
-For each operation, print the number of sticks that are cut, on separate lines.
-
-Constraints 
-1 ≤ N ≤ 1000 
-1 ≤ ai ≤ 1000
-
-Sample Input #00
-
-6
-5 4 4 2 2 8
-Sample Output #00
-
-6
-4
-2
-1
-Sample Input #01
-
-8
-1 2 3 4 3 3 2 1
-
-Sample Output #01
-
-8
-6
-4
-1
-*/
-
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-
-public class Solution {
-
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-        ArrayList &ltInteger&gt sticks = new ArrayList&ltInteger&gt();
-        int numSticks = Integer.parseInt(sc.nextLine());
-        for(int i = 0;i&ltnumSticks;i++){
-            sticks.add(new Integer(sc.nextInt()));
-        }
-        while(sticks.size()>0){
-            Collections.sort(sticks);
-            int shortestStick = sticks.get(0);
-            
-            int pos = 0;
-            System.out.println(sticks.size());
-            while(pos&ltsticks.size()){
-                int num = sticks.get(pos);
-                num-=shortestStick;
-                if(num>0){
-                    sticks.set(pos,num);
-                    pos++;
-                }else{
-                    sticks.remove(pos);
-                
-                }
-            
-            }  
-            
-           
-        }
-    }
-}
-
- </code></pre>
+if __name__ == "__main__":
+    print Solution().reverse(123)
+    print Solution().reverse(-321)
+    
+    
+    </code></pre>
   </body>
 </html>		

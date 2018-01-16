@@ -1,73 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-
-
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
+# Time:  O(n)
+# Space: O(1)
+#
+# Given two strings s and t, write a function to
+# determine if t is an anagram of s.
+#
+# For example,
+# s = "anagram", t = "nagaram", return true.
+# s = "rat", t = "car", return false.
+#
+# Note:
+# You may assume the string contains only lowercase alphabets.
+#
 
+class Solution:
+    # @param {string} s
+    # @param {string} t
+    # @return {boolean}
+    def isAnagram(self, s, t):
+        if len(s) != len(t):
+            return False
 
+        count = {}
 
+        for c in s:
+            if c.lower() in count:
+                count[c.lower()] += 1
+            else:
+                count[c.lower()] = 1
 
-/* Alternating Characters
-Shashank likes strings in which consecutive characters are different. For example, he likes ABABA, while he doesn't like ABAA. Given a string containing characters A and B only, he wants to change it into a string he likes. To do this, he is allowed to delete the characters in the string.
+        for c in t:
+            if c.lower() in count:
+                count[c.lower()] -= 1
+            else:
+                count[c.lower()] = -1
+            if count[c.lower()] < 0:
+                return False
 
-Your task is to find the minimum number of required deletions.
+        return True
+    
+    def isAnagram2(self, s, t):
+        return all([s.count(c)==t.count(c) for c in string.ascii_lowercase])
+    
+    def isAnagram3(self, s, t):
+        if len(s) != len(t):
+            return False 
+        count = collections.defaultdict(int)
+        for c in s:
+            count[c] += 1
+        for c in t:
+            count[c] -= 1
+            if count[c] < 0:
+                return False
+        return True
 
-Input Format
-
-The first line contains an integer T, i.e. the number of test cases. 
-The next T lines contain a string each.
-
-Output Format
-
-For each test case, print the minimum number of deletions required.
-
-Constraints
-
-1≤T≤10 
-1≤ length of string ≤10^5
-*/
-
-import java.io.*;
-import java.util.*;
-
-public class AlternatingCharacters {
-
-    public static int consecutiveChars(String str)
-    {
-        StringBuilder mutableStr = new StringBuilder(str);
-        int numDeletions = 0;
-        int pos = 0;
-        while(pos&ltmutableStr.length()-1){
-            if(mutableStr.charAt(pos)==mutableStr.charAt(pos+1)){
-                mutableStr.deleteCharAt(pos);
-                numDeletions++;
-            }else{
-                pos++;
-            }
-        }
+# Time:  O(nlogn)
+# Space: O(n)
+class Solution2:
+    # @param {string} s
+    # @param {string} t
+    # @return {boolean}
+    def isAnagram(self, s, t):
+        return sorted(s) == sorted(t)
         
         
-        return numDeletions;
-    }
-    public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner sc = new Scanner(System.in);
-        int numCases = Integer.parseInt(sc.nextLine());
-        for(int i=0;i&ltnumCases;i++){
-            System.out.println(consecutiveChars(sc.nextLine()));
-        }
-    }
-}
-
-  </code></pre>
+        </code></pre>
   </body>
 </html>		
