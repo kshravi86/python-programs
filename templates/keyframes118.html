@@ -1,53 +1,102 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
-
-
-
-# Set .union() Operation
-
-# .union()
-# The .union() operator returns the union of a set and the set of elements in an iterable. 
-# Sometimes, the | operator is used in place of .union() operator, but it operates only on the set of elements in set.
-# Set is immutable to the .union() operation (or | operation).
-
-# Task
-# The students of District College have subscriptions to English and French newspapers. Some students have subscribed only to English,
-# some have subscribed to only French and some have subscribed to both newspapers.
-# You are given two sets of student roll numbers. One set has subscribed to the English newspaper, and the other set is subscribed to the
-# French newspaper. The same student could be in both sets. Your task is to find the total number of students who have subscribed to at
-# least one newspaper.
-
-# Input Format
-# The first line contains an integer, n, the number of students who have subscribed to the English newspaper. 
-# The second line contains n space separated roll numbers of those students. 
-# The third line contains b, the number of students who have subscribed to the French newspaper. 
-# The fourth line contains b space separated roll numbers of those students.
-
-# Constraints
-# 0 < Total number of students in college < 1000
-
-# Output Format
-# Output the total number of students who have at least one subscription.
+<pre class="language-java"><code>
 
 
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-eng_num = int(raw_input())
-eng_list = raw_input().split()
-eng_set = set(map(int, eng_list))
-fren_num = int(raw_input())
-fren_list = raw_input().split()
-fren_set = set(map(int, fren_list))
 
-print len(eng_set.union(fren_set))
 
-</code></pre>
+
+
+
+
+/* Java Iterator
+
+Java Iterator class can help you to iterate through every elements in an collection. Here is a simple example:
+
+import java.util.*;
+public class Example
+{
+
+    public static void main(String []argh)
+    {
+        ArrayList mylist = new ArrayList();
+        mylist.add("Hello");
+        mylist.add("Java");
+        mylist.add("4");
+        Iterator it=mylist.iterator();
+        while(it.hasNext())
+        {
+            Object element = it.next();
+            System.out.println((String)element);
+        }
+    }
+}
+In this problem you need to complete a method func. The method takes an ArrayList as input. In that ArrayList there is one or more integer numbers, then there is a special string "###", after that there are one or more other strings. A sample ArrayList may look like this:
+
+element[0]=>42
+element[1]=>10
+element[2]=>"###"
+element[3]=>"Hello"
+element[4]=>"Java"
+You have to modify the func method by editing at most 2 lines so that the code only prints the elements 
+after the special string "###". For the sample above the output will be:
+
+Hello
+Java
+Note: The stdin doesn't contain the string "###", it is added in the main method.
+*/
+
+import java.util.*;
+public class JavaIterator
+{
+   static Iterator func(ArrayList mylist)
+   {
+      Iterator it=mylist.iterator();
+      while(it.hasNext())
+      {
+         Object element = it.next();
+         if(element instanceof String) //Hints: use instanceof operator
+            break;
+      }
+      return it;
+      
+   }
+
+   public static void main(String []argh)
+   {
+      ArrayList mylist = new ArrayList();
+      Scanner sc=new Scanner(System.in);
+      int n=sc.nextInt();
+      int m=sc.nextInt();
+      for(int i=0;i&ltn;i++)
+      {
+         mylist.add(sc.nextInt());
+      }
+      mylist.add("###");
+      for(int i=0;i&ltm;i++)
+      {
+         mylist.add(sc.next());
+      }
+      
+      
+      Iterator it=func(mylist);
+      while(it.hasNext())
+      {
+         Object element = it.next();
+         System.out.println((String)element);
+      }
+      
+   }
+}
+
+
+        </code></pre>
   </body>
 </html>		
+

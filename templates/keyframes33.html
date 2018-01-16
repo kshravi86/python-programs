@@ -1,59 +1,48 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-# -*- coding: utf-8 -*-
-"""
-Problem Statement
-
-You are given two strings, A and B. Find if there is a substring that appears in both A and B.
-"""
+<pre class="language-java"><code>
 
 
 
-class Solution(object):
-    def solve(self, cipher):
-        """
-        main solution function
-        :param cipher: the cipher
-        """
-        a = map(set, cipher)
-        ret = a[0].intersection(a[1])
-        if len(ret) > 0:
-            return "YES"
-        else:
-            return "NO"
 
 
-if __name__ == "__main__":
-    import sys
 
-    f = open("0.in", "r")
-    # f = sys.stdin
-    solution = Solution()
-    testcases = int(f.readline().strip())
+/*
+Strange Counter
 
-    for t in xrange(testcases):
-        # construct cipher
-        cipher = []
-        cipher.append(f.readline().strip())
-        cipher.append(f.readline().strip())
-        # solve
-        s = "%s\n" % (solution.solve(cipher))
-        print s,
+https://www.hackerrank.com/challenges/strange-code
+
+*/
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class StrangeCounter {
+   
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        long  t = in.nextLong();
         
-        
-        
-        </code></pre>
+        int time = 1;
+        long counter = 3;
+        while(time + counter &lt= t){
+            time += counter;
+            counter *=2;
+        }
+        System.out.println(counter - (t - time));
+    }
+}
+
+
+</code></pre>
   </body>
 </html>		
-    
-        

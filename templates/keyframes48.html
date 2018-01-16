@@ -1,69 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+<pre class="language-java"><code>
 
 
 
-# -*- coding: utf-8 -*-
-"""
-Problem Statement
 
-Martha is interviewing at Subway. One of the rounds of the interview requires her to cut a bread of size l×b into
-smaller identical pieces such that each piece is a square having maximum possible side length with no left over piece of
-bread.
+/* Simple Array Sum
 
-Input format
-The first line contains an integer T. T lines follow. Each line contains two space separated integers l and b which
-denote length and breadth of the bread.
+You are given an array of integers of size N. Can you find the sum of the elements in the array?
 
-Output format
+Input 
+The first line of input consists of an integer N. The next line contains N space-separated integers 
+representing the array elements. 
+Sample:
 
-T lines, each containing an integer that denotes the number of squares of maximum size, when the bread is cut as per
-the given condition.
-"""
+6
+1 2 3 4 10 11
+Output 
+Output a single value equal to the sum of the elements in the array. 
+For the sample above you would just print 31 since 1+2+3+4+10+11=31.
+
+*/
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class SimpleArraySum {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int number = sc.nextInt();
+        int sum=0;
+        for(int i = 0;i&ltnumber;i++){
+            sum+=sc.nextInt();
+        }
+        System.out.println(sum);
+    }
+}
 
 
-
-class Solution(object):
-    def solve(self, cipher):
-        """
-        gcd
-        :param cipher: the cipher
-        """
-        l, b = cipher
-        r = self.gcd(l, b)
-        return (l * b) / (r * r)
-
-    def gcd(self, a, b):
-        while b:
-            a, b = b, a % b
-        return a
-
-
-if __name__ == "__main__":
-    import sys
-
-    f = open("1.in", "r")
-    # f = sys.stdin
-    testcases = int(f.readline().strip())
-
-    for t in xrange(testcases):
-        # construct cipher
-        cipher = map(int, f.readline().strip().split(' '))
-
-        # solve
-        s = "%s\n" % (Solution().solve(cipher))
-        print s,
-        
-        
-           </code></pre>
+ </code></pre>
   </body>
 </html>		
-    

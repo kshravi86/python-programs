@@ -1,71 +1,82 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
-
-
-		
+<pre class="language-java"><code>
 
 
 
-# Mutations
 
-# We have seen that lists are mutable (they can be changed), and tuples are immutable (they cannot be changed).
 
-# Let's try to understand this with an example.
+/* Java String Token
 
-# You are given an immutable string, and you want to make changes to it.
+Given a string, find number of words in that string. For this problem a word is defined by a string of one or more 
+english alphabets.
 
-# Example
-# >>> string = "abracadabra"
+There are multiple ways to tokenize a string in java, learn how to tokenize a string in java and demonstrate your 
+skill by solving this problem!
 
-# You can access an index by:
-# >>> print string[5]
-# a
+Input Format
+A string not more than 400000 characters long. The string can be defined by following regular expression:
 
-# What if you would like to assign a value?
-# >>> string[5] = 'k' 
-# Traceback (most recent call last):
-#   File "<stdin>", line 1, in <module>
-# TypeError: 'str' object does not support item assignment
+[A-Za-z !,?.\_'@]+
+That means the string will only contain english alphabets, blank spaces and this characters: "!,?._'@".
 
-# How would you approach this?
-# One solution is to convert the string to a list and then change the value.
-# Example
-# >>> string = "abracadabra"
-# >>> l = list(string)
-# >>> l[5] = 'k'
-# >>> string = ''.join(l)
-# >>> print string
-# abrackdabra
+Output Format
+In the first line, print number of words n in the string. The words don't need to be unique. In the next n lines, 
+print all the words you found in the order they appeared in the input.
 
-# Another approach is to slice the string and join it back.
-# Example
-# >>> string = string[:5] + "k" + string[6:]
-# >>> print string
-# abrackdabra
+Sample Input
 
-# Task 
-# Read a given string, change the character at a given index and then print the modified string.
+He is a very very good boy, isn't he?
+Sample Output
 
-# Input Format 
-# The first line contains a string, S. 
-# The next line contains an integer i, denoting the index location and a character c separated by a space.
+10
+He
+is
+a
+very
+very
+good
+boy
+isn
+t
+he
+*/
 
-# Output Format 
-# Using any of the methods explained above, replace the character at index i with character c.
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-S = raw_input()
-T = tuple(raw_input().split(' '))
-S = S[:int(T[0])] + T[1] + S[int(T[0]) + 1:]
-print S
+public class JavaStringToken {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+       
+        if (!sc.hasNext()){
+            System.out.println(0);
+        }else {
+             String input=sc.nextLine();
+            String[]a = input.trim().split("[ !,?._'@]+");
+            ArrayList<String>listOfStrings =new ArrayList<String>(Arrays.asList(a));
+            System.out.println(listOfStrings.size());
+      
+          for(String str:listOfStrings){
+            System.out.println(str);
+          }    
+        }
+        
+        
+        
+    }
+}
+
 
 
         </code></pre>

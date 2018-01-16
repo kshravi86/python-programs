@@ -1,66 +1,111 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+<pre class="language-java"><code>
 
 
 
-"""
-You have a record of N students. Each record contains the student's name, 
-and their percent marks in Maths, Physics and Chemistry. 
-The marks can be floating values. The user enters some integer N 
-followed by the names and marks for NN students. You are required to 
-save the record in a dictionary data type. The user then enters a student's name. 
-Output the average percentage marks obtained by that student, correct to two decimal places.
 
-Input Format:
-The first line contains the integer N, the number of students. 
-The next N lines contains the name and marks obtained by that student 
-separated by a space. The final line contains the name of a particular student previously listed.
 
-Output Format:
-Print one line: The average of the marks obtained by the particular student correct to 2 decimal places.
+
+
+
+/* Cut The Sticks
+
+You are given N sticks, where the length of each stick is a positive integer. A cut operation is performed on the sticks such that all of them are reduced by the length of the smallest stick.
+
+Suppose we have six sticks of the following lengths:
+
+5 4 4 2 2 8
+Then, in one cut operation we make a cut of length 2 from each of the six sticks. For the next cut 
+operation four sticks are left (of non-zero length), whose lengths are the following:
+
+3 2 2 6
+The above step is repeated until no sticks are left.
+
+Given the length of N sticks, print the number of sticks that are left before each subsequent cut operations.
+
+Note: For each cut operation, you have to recalcuate the length of smallest sticks (excluding zero-length sticks).
+
+Input Format 
+The first line contains a single integer N. 
+The next line contains N integers: a0, a1,...aN-1 separated by space, where ai represents the length of ith stick.
+
+Output Format 
+For each operation, print the number of sticks that are cut, on separate lines.
 
 Constraints 
-2 <= N <= 10 
-0 <= Marks <= 100
+1 ≤ N ≤ 1000 
+1 ≤ ai ≤ 1000
 
-Sample Input:
+Sample Input #00
 
-3
-Krishna 67 68 69
-Arjun 70 98 63
-Malika 52 56 60
-Malika
+6
+5 4 4 2 2 8
+Sample Output #00
 
-Sample Output:
+6
+4
+2
+1
+Sample Input #01
 
-56.00
-"""
+8
+1 2 3 4 3 3 2 1
 
-import sys
+Sample Output #01
 
-def query_records():
-    results = {}
-    num_students = int(raw_input())
-    for i in range(num_students):
-        info = raw_input()
-        results[info[:info.find(' ')]] = map(float, info[info.find(' ') + 1:].split(' '))
-    student = raw_input()
-    return "%0.2f" % ((sum(results[student]) + 0.0) / len(results[student]))
-         
-        
-        
-print query_records()
+8
+6
+4
+1
+*/
 
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
+public class Solution {
 
-        </code></pre>
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        ArrayList &ltInteger&gt sticks = new ArrayList&ltInteger&gt();
+        int numSticks = Integer.parseInt(sc.nextLine());
+        for(int i = 0;i&ltnumSticks;i++){
+            sticks.add(new Integer(sc.nextInt()));
+        }
+        while(sticks.size()>0){
+            Collections.sort(sticks);
+            int shortestStick = sticks.get(0);
+            
+            int pos = 0;
+            System.out.println(sticks.size());
+            while(pos&ltsticks.size()){
+                int num = sticks.get(pos);
+                num-=shortestStick;
+                if(num>0){
+                    sticks.set(pos,num);
+                    pos++;
+                }else{
+                    sticks.remove(pos);
+                
+                }
+            
+            }  
+            
+           
+        }
+    }
+}
+
+ </code></pre>
   </body>
 </html>		

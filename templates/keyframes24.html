@@ -1,88 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-
-"""
-You are given an array a of size N. The elements of the array are a[0], a[1], ... a[N-1], where each a[i] is either 0 or
- 1. You can perform one transformation on the array: choose any two integers L and R, and flip all the elements between
- (and including) the Lth and Rth bits. In other words L and R represent the left-most and the right-most index
- demarcating the boundaries of the segment whose bits you will decided to flip. ('Flipping' a bit means, that a 0 is
- transformed to a 1 and a 1 is transformed to a 0.)
-
-What is the maximum number of '1'-bits (indicated by S) which you can obtain in the final bit-string?
-"""
+<pre class="language-java"><code>
 
 
 
-def bitFlip(cipher):
-    """
-    main solution function
 
 
-    :type cipher: list
-    :param cipher: the cipher
-    """
-    if len(cipher) <= 2:
-        return len(cipher)
+/* Java Comparator
 
-    cipher = [val if val == 1 else -1 for val in cipher]
+Comparators are used to compare two objects to sort them. This problem will test your knowledge on Java Comparators.
 
-    # diff = [cipher[i+1]-cipher[i] for i in xrange(len(cipher)-1)]
-    maxl = 0
-    maxr = -1
-    min_sum = 1 << 31
+There are N players in a tournament. You will be given the name of each player and his score. 
+You need to sort the players in decreasing order by score. If two players have the same score, the one 
+whose name is lexicographically larger should appear first.
 
-    ssum = 0
-    l = 0
-    r = -1
+Note: We have already provided you with the partially completed code in the editor. Your task is to 
+create the class Checker which uses a comparator desc to sort the players.
 
-    for ind, val in enumerate(cipher):
-        ssum += val
-        if ssum > 0:
-            l = ind + 1
-            r = ind
-            ssum = 0
+A string is lexicographically smaller than another string if it appears earlier in a standard dictionary. 
+For example, "cat" is lexicographically smaller than "dog", but larger than "cab" or "ca".
 
-        if ssum < 0:
-            r = ind
+Input Format
 
-        if min_sum > ssum:
-            min_sum = ssum
-            maxr, maxl = r, l
+The first line contains an integer N, denoting the number of players. The next N lines contain the name of a player
+and his score separated by a space. Two players can have the same name. A name will consist of lowercase 
+English characters. The score of a player can range from 0 to 1000. You don't need to worry about any other constraints.
 
-    cipher = [val if val == 1 else 0 for val in cipher]
-    for i in xrange(maxl, maxr + 1):
-        cipher[i] ^= 1
+Output Format
 
-    return sum(cipher)
+Print each player and their space-separated score on a different line according to the directions in the problem statement.
 
+Sample Input
 
-if __name__ == "__main__":
-    import sys
+5
+amy 100
+david 100
+heraldo 50
+aakansha 75
+aleksa 150
 
-    f = open("1.in", "r")
-    # f = sys.stdin
-    N = int(f.readline().strip())
+Sample Output
 
-    cipher = []
-    for t in xrange(N):
-        # construct cipher
-        i = int(f.readline().strip())
-        cipher.append(i)
-        # solve
-    s = "%s\n" % (bitFlip(cipher))
-    print s,
+aleksa 150
+david 100
+amy 100
+aakansha 75
+heraldo 50
+
+*/
+
+class Checker 
+{
     
+    Comparator&ltPlayer&gt desc = new Comparator&ltPlayer&gt() {
+
+        @Override
+        public int compare(Player o1, Player o2) {
+           
+            if(o1.score==o2.score){
+                return o2.name.compareTo(o1.name);
+            }
+            return o1.score>o2.score?-1:1;
+        }
+    };
     
-        </code></pre>
+}
+
+
+</code></pre>
   </body>
 </html>		
-    

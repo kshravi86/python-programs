@@ -1,64 +1,47 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-
-# -*- coding: utf-8 -*-
-"""
-Problem Statement
-
-Suppose you have a string S which has length N and is indexed from 0 to N−1. String R is the reverse of the string S.
-The string S is funny if the condition |Si−Si−1|=|Ri−Ri−1| is true for every i from 1 to N−1.
-
-(Note: Given a string str, stri denotes the ascii value of the ith character (0-indexed) of str. |x| denotes the
-absolute value of an integer x)
-"""
+<pre class="language-java"><code>
 
 
 
-class Solution(object):
-    def solve(self, cipher):
-        """
-        main solution function
-        :param cipher: the cipher
-        """
-        s = cipher
-        r = s[::-1]
-        s = map(ord, list(s))
-        r = map(ord, list(r))
-        for i in xrange(1, len(s)):
-            if abs(s[i] - s[i - 1]) != abs(r[i] - r[i - 1]):
-                return "Not Funny"
-        return "Funny"
 
 
-if __name__ == "__main__":
-    import sys
+/* Java Generics
 
-    f = open("0.in", "r")
-    # f = sys.stdin
-    solution = Solution()
-    testcases = int(f.readline().strip())
+Generic methods are a very efficient way to handle multiple datatypes using a single method. 
+This problem will test your knowledge on Java Generic methods.
 
-    for t in xrange(testcases):
-        # construct cipher
-        cipher = f.readline().strip()
+Let's say you have an integer array and a string array. You have to write a single method printArray 
+that can print all the elements of both arrays. The method should be able to accept both integer arrays or string arrays.
 
-        # solve
-        s = "%s\n" % (solution.solve(cipher))
-        print s,
+You are given code in the editor. Complete the code so that it prints the following lines:
+
+1
+2
+3
+Hello
+World
+Do not use method overloading because your answer will not be accepted.
+
+*/
+
+class Printer
+{
+    public static void printArray(Object[] arr)
+    {
+        for(int i = 0;i&ltarr.length;i++){
+            System.out.println(""+arr[i]); 
+        }
         
-        
-        
-        
-        </code></pre>
+    }
+}
+
+</code></pre>
   </body>
 </html>		

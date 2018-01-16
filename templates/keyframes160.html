@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,67 +7,47 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
+	<pre class="language-java"><code>
 
 
+		
 
 
+/*
+Java Regex
+
+Write a class called myRegex which will contain a string pattern. You need to write a regular expression and assign it to 
+the pattern such that it can be used to validate an IP address. Use the following definition of an IP address:
+
+IP address is a string in the form "A.B.C.D", where the value of A, B, C, and D may range from 0 to 255. Leading zeros are 
+allowed. The length of A, B, C, or D can't be greater than 3.
+Some valid IP address:
+
+000.12.12.034
+121.234.12.12
+23.45.12.56
+Some invalid IP address:
+
+000.12.234.23.23
+666.666.23.23
+.213.123.23.32
+23.45.22.32.
+I.Am.not.an.ip
+In this problem you will be provided strings containing any combination of ASCII characters. You have to write a regular 
+expression to find the valid IPs.
+
+Just write the myRegex class, and we will append your code after the following piece of code automatically before running it:
+
+*/
 
 
-#Set .difference() Operation
-
-# .difference()
-# The tool .difference() returns a set with all the elements from the set that are not in an iterable.
-# Sometimes the - operator is used in place of the .difference() tool, but it only operates on the set of elements in set.
-# Set is immutable to the .difference() operation (or the - operation).
-
-# >>> s = set("Hacker")
-# >>> print s.difference("Rank")
-# set(['c', 'r', 'e', 'H'])
-
-# >>> print s.difference(set(['R', 'a', 'n', 'k']))
-# set(['c', 'r', 'e', 'H'])
-
-# >>> print s.difference(['R', 'a', 'n', 'k'])
-# set(['c', 'r', 'e', 'H'])
-
-# >>> print s.difference(enumerate(['R', 'a', 'n', 'k']))
-# set(['a', 'c', 'r', 'e', 'H', 'k'])
-
-# >>> print s.difference({"Rank":1})
-# set(['a', 'c', 'e', 'H', 'k', 'r'])
-
-# >>> s - set("Rank")
-# set(['H', 'c', 'r', 'e'])
-
-# Task
-# Students of District College have a subscription to English and French newspapers. Some students have subscribed to only the English
-# newspaper, some have subscribed to only the French newspaper, and some have subscribed to both newspapers.
-# You are given two sets of student roll numbers. One set has subscribed to the English newspaper, and one set has subscribed to the
-# French newspaper. Your task is to find the total number of students who have subscribed to only English newspapers.
-
-# Input Format
-# The first line contains the number of students who have subscribed to the English newspaper. 
-# The second line contains the space separated list of student roll numbers who have subscribed to the English newspaper.
-# The third line contains the number of students who have subscribed to the French newspaper. 
-# The fourth line contains the space separated list of student roll numbers who have subscribed to the French newspaper.
-
-# Constraints
-# 0 < Total number of students in college < 1000
-
-# Output Format
-# Output the total number of students who are subscribed to the English newspaper only.
+class myRegex
+{
+    String pattern = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+            
+}
 
 
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-eng_num = int(raw_input())
-eng_set = set(map(int, raw_input().split()))
-fren_num = int(raw_input())
-fren_set = set(map(int, raw_input().split()))
-
-print len(eng_set.difference(fren_set))
-
-
-        </code></pre>
-  </body>
+</code></pre>
+</body>
 </html>		

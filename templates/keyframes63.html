@@ -1,78 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+<pre class="language-java"><code>
 
 
 
 
-"""
-Task:
-You are given a string S. 
-Your task is to find out if the string S contains: 
-alphanumeric characters, alphabetical characters, 
-digits, lowercase and uppercase characters.
-
-Input Format:
-A single line containing a string SS.
-
-Constraints:
-0 < len(S) <10000 < len(S) <1000
-
-Output Format:
-In the first line, print True if S has any alphanumeric characters. Otherwise, print False. 
-In the second line, print True if S has any alphabetical characters. Otherwise, print False. 
-In the third line, print True if S has any digits. Otherwise, print False. 
-In the fourth line, print True if S has any lowercase characters. Otherwise, print False. 
-In the fifth line, print True if S has any uppercase characters. Otherwise, print False.
-
-Sample Input:
-
-qA2
-
-Sample Output:
-
-True
-True
-True
-True
-True
-"""
 
 
-import sys
-
-def get_input():
-    raw_inp = sys.stdin.readlines()
-    return [s[:s.find('\n')] if '\n' in s else s for s in raw_inp][0]
-
-def test_string(s):
-    tests = ['any_alphanum', 'any_alphab', 'any_digits', 'any_lower', 'any_upper']
-    results = {test: False for test in tests}
-    for ch in s:
-        if ch.isalnum():
-            results['any_alphanum'] = True
-        if ch.isalpha():
-            results['any_alphab'] = True
-        if ch.isdigit():
-            results['any_digits'] = True
-        if ch.islower():
-            results['any_lower'] = True
-        if ch.isupper():
-            results['any_upper'] = True
-    for test in tests:
-        print results[test]
-            
-    
-test_string(get_input())
 
 
+/*
+ * https://www.hackerrank.com/challenges/camelcase
+ * Alice wrote a sequence of words in CamelCase as a string of letters, , having the following properties:
+	- It is a concatenation of one or more words consisting of English letters.
+    - All letters in the first word are lowercase.
+    - For each of the subsequent words, the first letter is uppercase and rest of the letters are lowercase.
+
+Given , print the number of words in s on a new line.
+
+Input Format
+
+A single line containing string .
+
+Constraints
+
+Output Format
+
+Print the number of words in string .
+
+Sample Input
+
+saveChangesInTheEditor
+
+Sample Output
+
+5
+
+Explanation
+
+String s contains five words:
+    save
+    Changes
+    In
+    The
+    Editor
+
+Thus, we print 5 on a new line.
+*/
+
+import java.util.Scanner;
+
+public class CamelCase {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int count = 0;
+		String str = in.nextLine();
+		char[] arr = str.toCharArray();
+		for (int i = 0; i < arr.length; i++) {
+			if (Character.isUpperCase(arr[i])) {
+				count++;
+			}
+		}
+		// First word's letter will not be in upper case. So, we have to add +1 in final answer
+		System.out.println(count + 1);
+	}
+}
+
+
+ 
         </code></pre>
   </body>
 </html>		

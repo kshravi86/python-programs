@@ -1,59 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+<pre class="language-java"><code>
 
 
 
 
-"""
-In this challenge, the user enters a string and a substring. 
-You have to print the number of times that the substring 
-occurs in the given string. 
-String traversal will take place from left to right, not from right to left.
+/* Plus Minus
+You're given an array containing integer values. You need to print the fraction of count of positive numbers, negative numbers and zeroes to the total numbers. Print the value of the fractions correct to 3 decimal places.
 
-NOTE: String letters are case-sensitive.
+Input Format
 
-Input Format:
-The first line of input contains the original string. The next line contains the substring.
+First line contains N, which is the size of the array. 
+Next line contains N integers A1,A2,A3,⋯,AN, separated by space.
 
-Constraints:
-1 <= len(string) <= 2001 <= len(string) <= 200 
-Each character in the string is an ascii character.
+Constraints 
+1≤N≤100 
+−100≤Ai≤100
+Output Format
 
-Output Format:
-Output the integer number indicating the total number of occurrences of the substring in the original string.
+Output three values on different lines equal to the fraction of count of positive numbers, negative numbers and zeroes to the total numbers respectively correct to 3 decimal places.
 
-Sample Input:
-ABCDCDC
-CDC
+Sample Input
 
-Sample Output:
-2
-"""
+6
+-4 3 -9 0 4 1          
+Sample Output
 
+0.500
+0.333
+0.167
+Explanation
 
-import sys
+There are 3 positive numbers, 2 negative numbers and 1 zero in the array. 
+Fraction of the positive numbers, negative numbers and zeroes are 36=0.500, 26=0.333 and 16=0.167 respectively.
 
-def get_input():
-    raw_inp = sys.stdin.readlines()
-    form_inp = [s[:s.find('\n')] if '\n' in s else s for s in raw_inp]
-    return form_inp
+Note This challenge introduces precision problems. You can even print output to 4 decimal places and above but only the difference at 3rd decimal digit is noted. That is the reason you'll notice testcases have much higher precision (more decimal places) than required. 
+Answers with absolute error upto 10−4 will be accepted.
+*/
 
-def find_num_occ(s, sub_s):
-    return len([n for n in xrange(len(s)) if s.find(sub_s, n) == n])
+import java.io.*;
+import java.util.*;
 
-inp = get_input()
-print find_num_occ(inp[0], inp[1])
+public class PlusMinus {
 
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int numCases = Integer.parseInt(sc.nextLine());
+        double negativeCount=0.0,positiveCount=0.0,zeroCount=0.0;
+        for(int i=0;i<numCases;i++){
+            int num = sc.nextInt();
+            if(num<0){
+                negativeCount++;
+            }else if(num>0){
+                positiveCount++;
+            }else{
+                zeroCount++;
+            }
+        }
+        System.out.printf("%.6f\n%.6f\n%.6f",positiveCount/numCases,negativeCount/numCases,zeroCount/numCases);
+    }
+}
 
-
-        </code></pre>
+ </code></pre>
   </body>
 </html>		

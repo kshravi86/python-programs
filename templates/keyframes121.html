@@ -1,15 +1,13 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
-
-
+<pre class="language-java"><code>
 
 
 
@@ -17,46 +15,76 @@
 
 
 
-# No Idea!
+/* Java Instanceof keyword
 
-# There is an array of n integers. There are also 2 disjoint sets, A and B, each containing m integers. You like all the integers in set
-# A and dislike all the integers in set B. Your initial happiness is 0. For each i integer in the array, if i is in A, you add 1 to your
-# happiness. If i is in B, you add -1 to your happiness. Otherwise, your happiness does not change. Output your final happiness at the
-# end.
+The Java instanceof operator is used to test if the object or instance is an instanceof the specified type.
 
-# Note: Since A and B are sets, they have no repeated elements. However, the array might contain duplicate elements.
+In this problem we have given you three classes in the editor, Student, Rockstar and Hacker. In the main 
+function we populated an ArrayList with instances of these classes. count method counts how many instance of each 
+type are present in the ArrayList. Some lines of the code are missing, and you have to fix it by modifying only 3 lines!
 
-# Constraints 
-# 1 <= n <= 10^5
-# 1 <= m <= 10^5
-# 1 <= any integer in the input <= 10^9
- 
-# Input Format
-# The first line contains integers n and m separated by a space. 
-# The second line contains n integers, the elements of the array. 
-# The third and fourth lines contain m integers, A and B, respectively.
+To restore the original code in the editor, click on the top left icon in the editor and create a new buffer.
 
-# Output Format
-# Output a single integer, your total happiness.
+Sample Input
 
+5
+Student
+Student
+Rockstar
+Student
+Hacker
 
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-n_m = raw_input().split()
-n_m = map(int, n_m)
-n = map(int, raw_input().split())
-A = set(map(int, raw_input().split()))
-B = set(map(int, raw_input().split()))
+Sample Output
 
-counter = 0
-for i in n:
-    if i in A:
-        counter += 1
-    elif i in B:
-        counter -= 1
-
-print counter
+3 1 1
 
 
-</code></pre>
+*/
+
+import java.util.*;
+
+
+class Student{}
+class Rockstar{   }
+class Hacker{}
+
+
+public class JavaInstanceOf
+{
+   static String count(ArrayList mylist)
+   {
+      int a=0,b=0,c=0;
+      for(int i=0;i&ltmylist.size();i++)
+      {
+         Object element=mylist.get(i);
+         if(element instanceof Student)
+            a++;
+         if(element instanceof Rockstar)
+            b++;
+         if(element instanceof Hacker)
+            c++;
+      }
+      String ret= Integer.toString(a)+" "+ Integer.toString(b)+" "+ Integer.toString(c);
+      return ret;
+   }
+
+   public static void main(String []argh)
+   {
+      ArrayList mylist=new ArrayList();
+      Scanner sc=new Scanner(System.in);
+      int t=sc.nextInt();
+      for(int i=0;i&ltt;i++)
+      {
+         String s=sc.next();
+         if(s.equals("Student"))mylist.add(new Student());
+         if(s.equals("Rockstar"))mylist.add(new Rockstar());
+         if(s.equals("Hacker"))mylist.add(new Hacker());
+      }
+      System.out.println(count(mylist));
+   }
+}
+
+
+        </code></pre>
   </body>
 </html>		

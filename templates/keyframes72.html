@@ -1,80 +1,77 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+<pre class="language-java"><code>
 
 
 
 
 
-"""
-John has discovered various rocks. Each rock is composed of various elements, 
-and each element is represented by a lower-case Latin letter from 'a' to 'z'. 
-An element can be present multiple times in a rock. An element is called a gem-element 
-if it occurs at least once in each of the rocks.
 
-Given the list of N rocks with their compositions, display the number of gem-elements that exist in those rocks.
 
-Input Format:
+/* Save the Prisoner!
+https://www.hackerrank.com/challenges/save-the-prisoner
 
-The first line consists of an integer, NN, the number of rocks. 
-Each of the next NN lines contains a rock's composition. 
-Each composition consists of lower-case letters of English alphabet.
+A jail has  prisoners, and each prisoner has a unique id number, S , ranging from 1 to N .
+There are  sweets that must be distributed to the prisoners.
 
-Constraints: 
-1 <= N <= 100
+The jailer decides the fairest way to do this is by sitting the prisoners down in a circle (ordered by ascending ), 
+and then, starting with some random , distribute one candy at a time to each sequentially numbered prisoner until all  candies are distributed. For example, if the jailer picks prisoner , then his distribution order would be  until all  sweets are distributed.
 
-Each composition consists of only lower-case Latin letters ('a'-'z'). 
-1 <= length of each composition <= 100
+But wait—there's a catch—the very last sweet is poisoned! Can you find and print the ID number of the last prisoner 
+to receive a sweet so he can be warned?
 
-Output Format:
+Input Format
 
-Print the number of gem-elements that are common in these rocks. If there are none, print 0.
+The first line contains an integer, T , denoting the number of test cases. 
+The T subsequent lines each contain 3 space-separated integers: 
+N (the number of prisoners), M (the number of sweets), and S (the prisoner ID), respectively.
 
-Sample Input:
 
-3
-abcdde
-baccd
-eeabg
+Output Format
 
-Sample Output:
+For each test case, print the ID number of the prisoner who receives the poisoned sweet on a new line.
+
+Sample Input
+
+1 
+5 2 1
+Sample Output
 
 2
-"""
+*/
 
+import java.io.*;
+import java.util.*;
 
-import string
-import sys
+public class SavethePrisoner {
 
-def format_input():
-    raw_inp = sys.stdin.readlines()[1:]
-    formatted_inp = [s[:s.find('\n')] if '\n' in s else s for s in raw_inp]
-    return formatted_inp
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        int numTestCases = sc.nextInt();
+        for(int i = 0; i < numTestCases; i++){
+            int numPrisoners = sc.nextInt();
+            int numCandies = sc.nextInt();
+            int startID = sc.nextInt();
+            
+            if ((startID + numCandies) > numPrisoners) {
+                int leftCandies = (startID + numCandies) - numPrisoners - 1;
+                System.out.println(leftCandies <= 1 || (leftCandies % numPrisoners) == 0?numPrisoners : (leftCandies % numPrisoners));
+            } else {
+                System.out.println("" + ((startID + numCandies) - 1) );
+            }
+        }
+        
+    }
+}
 
-def get_num_gemstones(rock_elements):
-    element_freqs = {letter: 0 for letter in string.lowercase}
-    for item in rock_elements:
-        already_counted = []
-        for letter in item:
-            if letter not in already_counted:
-                element_freqs[letter] += 1
-            already_counted.append(letter)
-    num_common = 0
-    for key in element_freqs:
-        if element_freqs[key] == len(rock_elements):
-            num_common += 1
-    return num_common
-    
-print get_num_gemstones(format_input())
-
-
-        </code></pre>
+ </code></pre>
   </body>
 </html>		

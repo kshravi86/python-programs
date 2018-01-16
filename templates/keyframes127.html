@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
-
-
-		
+<pre class="language-java"><code>
 
 
 
@@ -17,36 +14,83 @@
 
 
 
-# itertools.permutations()
 
-# itertools.permutations(iterable[, r])
-# This tool returns successive r length permutations of elements in an iterable.
-# If r is not specified or is None, then r defaults to the length of the iterable, and all possible full length permutations are generated.
-# Permutations are printed in a lexicographic sorted order. So, if the input iterable is sorted, the permutation tuples will be produced
-# in a sorted order.
 
-# Task
-# You are given a string S. 
-# Your task is to print all possible permutations of size k of the string in lexicographic sorted order.
+/* Java Abstract Class 
 
-# Input Format
-# A single line containing the space separated string S and the integer value k.
+A Java abstract class is a class that can't be instantiated, that means you cannot create 
+new instances of an abstract class. It works as a base for subclasses. You should learn about 
+Java Inheritence before attempting this challenge.
 
-# Constraints
-# 0 < k <= len(S) 
-# The string contains only UPPERCASE characters.
+Following is an example of abstact class:
 
-# Output Format
-# Print the permutations of the string S on separate lines.
+abstract class Book
+{
+    String title;
+    abstract void setTitle(String s);
+    String getTitle()
+    {
+        return title;
+    }
 
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-from itertools import permutations
+}
+If you try to create an instance of this class like the following line you will get an error:
 
-S = raw_input().split()
+Book new_novel=new Book(); 
+You have to create another class that extends the abstract class. Then you can create instance of the new class.
 
-for i in sorted(permutations(S[0], int(S[1]))):
-    print ''.join(i)
+Notice that setTitle method is abstract too and has no body. That means you must implement the body of 
+the that method in the child class.
+
+In the editor we have provided the abstract Book class and a Main class. In the Main class we created 
+instance of a class called MyBook. Your task is to write just the Mybook class. Your class mustn't be public.
+
+Sample Input
+
+A tale of two cities
+Sample Output
+
+The title is: A tale of two cities
+
+*/
+
+import java.util.*;
+abstract class Book
+{
+   String title;
+   abstract void setTitle(String s);
+   String getTitle()
+   {
+      return title;
+   }
+   
+}
+
+//Write MyBook class here
+ class MyBook extends Book
+{
+    void setTitle(String s)
+    {
+        title = s;
+    }
     
-      </code></pre>
+}
+
+public class JavaAbstractClass
+{
+   
+   public static void main(String []args)
+   {
+      Scanner sc=new Scanner(System.in);
+      String title=sc.nextLine();
+      MyBook new_novel=new MyBook();
+      new_novel.setTitle(title);
+      System.out.println("The title is: "+new_novel.getTitle());
+      
+   }
+}
+
+
+        </code></pre>
   </body>
 </html>		

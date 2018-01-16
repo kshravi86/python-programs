@@ -1,61 +1,92 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+<pre class="language-java"><code>
 
 
 
-"""
-Problem Statement
-
-You are given N sticks, where each stick is of positive integral length. A cut operation is performed on the sticks such
-that all of them are reduced by the length of the smallest stick.
-
-Suppose we have 6 sticks of length
-"""
 
 
 
-class Solution(object):
-    def solve(self, cipher):
-        """
-        main solution function
-        :param cipher: the cipher
-        """
-        N, A = cipher
-        A.sort()
+/* Java Map
 
-        result = []
-        while A:
-            result.append(len(A))
-            A = map(lambda x: x - A[0], A)
-            A = filter(lambda x: x > 0, A)
+You are given a phone book that consists of people's names and their phone number. After that you will 
+be given some person's name as query. For each query, print the phone number of that person.
 
-        return "\n".join(map(str, result))
+Input Format
+
+The first line will have an integer n denoting the number of entries in the phone book. Each entry consists of 
+two lines: a name and the corresponding phone number. 
+
+After these, there will be some queries. Each query will contain a person's name. Read the queries until end-of-file.
+
+Constraints:
+A person's name consists of only lower-case English letters and it may be in the format 'first-name last-name' 
+or in the format 'first-name'. Each phone number has exactly 8 digits without any leading zeros.
+
+1≤n≤100000
+1≤Query≤100000
+
+Output Format
+
+For each case, print "Not found" if the person has no entry in the phone book. Otherwise, print the person's 
+name and phone number. See sample output for the exact format.
+
+To make the problem easier, we provided a portion of the code in the editor. You can either complete that code 
+or write completely on your own.
+
+Sample Input
+
+3
+uncle sam
+99912222
+tom
+11122222
+harry
+12299933
+uncle sam
+uncle tom
+harry
+
+Sample Output
+
+uncle sam=99912222
+Not found
+harry=12299933
+*/
+
+import java.util.*;
+import java.io.*;
+
+class JavaMap{
+   public static void main(String []argh)
+   {
+      Map database = new HashMap();
+      Scanner in = new Scanner(System.in);
+      int n=in.nextInt();
+      in.nextLine();
+      for(int i=0;i&ltn;i++)
+      {
+         String name=in.nextLine();
+         int phone=in.nextInt();
+         database.put(name,""+phone);
+         in.nextLine();
+      }
+      while(in.hasNext())
+      {
+         String s=in.nextLine();
+         String phone = (String)database.get(s); 
+         System.out.println(phone==null?"Not found":s+"="+phone);
+      }
+   }
+}
 
 
-if __name__ == "__main__":
-    import sys
-
-    f = open("1.in", "r")
-    # f = sys.stdin
-    solution = Solution()
-    N = int(f.readline().strip())
-    A = map(int, f.readline().strip().split(' '))
-    cipher = N, A
-
-    # solve
-    s = "%s\n" % (solution.solve(cipher))
-    print s,
-    
-    
-    
         </code></pre>
   </body>
 </html>		

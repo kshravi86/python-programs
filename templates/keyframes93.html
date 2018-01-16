@@ -1,66 +1,84 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
-
-
+<pre class="language-java"><code>
 
 
-# Exceptions
-
-# Exceptions
-# Errors detected during execution are called exceptions.
-
-# Examples:
-
-# ZeroDivisionError 
-# This error is raised when the second argument of a division or modulo operation is zero.
-
-# ValueError 
-# This error is raised when a built-in operation or function receives an argument that has the right type but an inappropriate value.
-
-# Handling Exceptions
-# The statements try and except can be used to handle selected exceptions. A try statement may have more than one except clause to
-# specify handlers for different exceptions.
-
-# Output
-# Error Code: integer division or modulo by zero
-
-# Task
-# You are given two values a and b. 
-# Perform integer division and print a/b.
-
-# Input Format
-# The first line contains T, the number of test cases. 
-# The next T lines each contain the space separated values of a and b.
-
-# Constraints
-# 0 < T < 10
-
-# Output Format
-# Print the value of a/b. 
-# In the case of ZeroDivisionError or ValueError, print the error code.
 
 
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-N = int(raw_input())
-a = []
-for i in range(N):
-    a.append(raw_input().split())
-for j in range(len(a)):
-    try:
-        print int(a[j][0])//int(a[j][1])
-    except ZeroDivisionError as e:
-        print "Error Code:", e
-    except ValueError as f:
-        print "Error Code:", f
-        
-        
-      </code></pre>
+
+/*Gem Stones
+
+John has discovered various rocks. Each rock is composed of various elements, and each element is 
+represented by a lower-case Latin letter from 'a' to 'z'. An element can be present multiple times in a rock. An element is called a gem-element if it occurs at least once in each of the rocks.
+
+Given the list of N rocks with their compositions, display the number of gem-elements that exist in those rocks.
+
+Input Format
+
+The first line consists of an integer, N, the number of rocks. 
+Each of the next N lines contains a rock's composition. Each composition consists of lower-case 
+letters of English alphabet.
+
+Constraints 
+1≤N≤100 
+Each composition consists of only lower-case Latin letters ('a'-'z'). 
+1≤ length of each composition ≤100
+Output Format
+
+Print the number of gem-elements that are common in these rocks. If there are none, print 0.
+
+Sample Input
+
+3
+abcdde
+baccd
+eeabg
+
+Sample Output
+
+2
+*/
+
+import java.io.*;
+import java.util.*;
+
+public class GemStones {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Map&ltString, Integer&gt dict = new HashMap&ltString, Integer&gt();
+        int numTestCases = Integer.parseInt(sc.nextLine());
+        for(int i = 0;i&ltnumTestCases;i++){
+            String word = sc.nextLine();
+            for(int j = 0; j&ltword.length();j++){
+                if(i==0){
+                    dict.put(""+word.charAt(j),new Integer(1));
+                }else{
+                    Integer val = dict.get(""+word.charAt(j));
+                    if(val != null && val == i){
+                        val+=1;
+                        dict.put(""+word.charAt(j),val);
+                    }
+                }
+            }
+            
+        }
+        int count = 0;
+        for(Integer val:dict.values()){
+            if(val == numTestCases) count++;
+        }
+        System.out.println(count);
+    }
+}
+
+</code></pre>
   </body>
-</html>		    
+</html>		

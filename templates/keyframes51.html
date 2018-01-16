@@ -1,66 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+<pre class="language-java"><code>
 
 
 
 
 
-"""
-Given a time in AM/PM format, convert it to military (24-hour) time.
+/* Chocolate Feast
 
-Note: Midnight is 12:00:00AM on a 12-hour clock and 00:00:00 on a 24-hour clock. 
-Noon is 12:00:00PM on a 12-hour clock and 12:00:00 on a 24-hour clock.
+Little Bob loves chocolate, and he goes to a store with $N in his pocket. The price of each chocolate is $C. The store offers a discount: for every M wrappers he gives to the store, he gets one chocolate for free. How many chocolates does Bob get to eat?
 
-Input Format:
+Input Format: 
+The first line contains the number of test cases, T. 
+T lines follow, each of which contains three integers, N, C, and M.
 
-A time in 12-hour clock format (i.e.: hh:mm:ssAM or hh:mm:ssPM), where 01≤hh≤1201≤hh≤12.
+Output Format: 
+Print the total number of chocolates Bob eats.
 
-Output Format:
+Constraints: 
+1≤T≤1000 
+2≤N≤105 
+1≤C≤N 
+2≤M≤N
 
-Convert and print the given time in 24-hour format, where 0 <= h <= 23
+Sample input
 
-Sample Input:
+3
+10 2 5
+12 4 4
+6 2 2
+Sample Output
 
-07:05:45PM
+6
+3
+5
 
-Sample Output:
+*/
 
-19:05:45
-"""
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class ChocolateFeast {
+
+    public static void main(String[] args) 
+    {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int i = 0; i < t; i++){
+            System.out.println(Solve(in.nextInt(), in.nextInt(), in.nextInt()));
+        }
+    }
+    
+    private static long Solve(int N, int C, int M){
+        
+        int candyAte = (int)N/C;
+        int wrappersLeft = candyAte;
+        int candyAteNow = 0;
+        do{
+            candyAteNow = (int)wrappersLeft/M;
+            candyAte+=candyAteNow;
+            wrappersLeft=candyAteNow+(wrappersLeft%M);
+            
+        }while(candyAteNow>0);
+        return candyAte;
+    }
+}
 
 
-import sys
-
-def format_input():
-    return sys.stdin.read()
-
-
-def convert_time(t):
-    converted_time = ''
-    if t[8] == 'P' and int(t[:2]) <= 12:
-        if t[:2] == '12':
-            converted_time += t[:8]
-        else:
-            converted_time += (str(12 + int(t[:2])) + t[2:8])
-    else:
-        if t[:2] == '12':
-            converted_time += ('00' + t[2:8])
-        else:
-            converted_time += t[:8]
-    return converted_time
-
-print convert_time(format_input())
-
-
-   
-        </code></pre>
+</code></pre>
   </body>
 </html>		

@@ -1,55 +1,77 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
-
-
+<pre class="language-java"><code>
 
 
 
-# Arrays
 
-# The NumPy (Numeric Python) package helps us manipulate large arrays and matrices of numeric data.
 
-# To use the NumPy module, we need to import it using:
-# import numpy
 
-# Arrays
-# A NumPy array is a grid of values. They are similar to lists, except that every element of an array must be the same type.
+/* Java Reflection - Attributes
 
-# import numpy
+JAVA reflection is a very powerful tool to inspect the attributes of a class in runtime. For example, 
+we can retrieve the list of public fields of a class using getDeclaredMethods().
 
-# a = numpy.array([1,2,3,4,5])
-# print a[1]          #2
+In this problem, you will be given a class Solution in the editor. You have to fill in the incompleted 
+lines so that it prints all the methods of another class called Student in alphabetical order. 
+We will append your code with the Student class before running it. The Student class looks like this:
 
-# b = numpy.array([1,2,3,4,5],float)
-# print b[1]          #2.0
+class Student{
+    private String name;
+    private String id;
+    private String email;
 
-# In the above example, numpy.array() is used to convert a list into a NumPy array. The second argument (float) can be used to set the
-# type of array elements.
+    public String getName() {
+        return name;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void anothermethod(){  }
+    ......
+    ......
+    some more methods
+    ......
+ }
+You have to print all the methods of the student class in alphabetical order like this:
 
-# Task
+anothermethod
+getName
+setEmail
+setId
+......
+......
+some more methods
+......
+There is no sample input/output for this problem. If you press "Run Code", it will compile it, but it won't show any outputs.
 
-# You are given a space separated list of numbers. 
-# Your task is to print a reversed NumPy array with the element type float.
+*/
 
-# Input Format
-# A single line of input containing space separated numbers.
+public class JavaReflection {
 
-# Output Format
-# Print the reverse NumPy array with type float.
-
-import numpy
-
-lis = numpy.array(raw_input().split(' '), float)
-print lis[::-1]
-
+    public static void main(String[] args){
+        Class student = new Student().getClass();
+        Method[] methods = student.getDeclaredMethods();
+        
+        ArrayList<String> methodList = new ArrayList<>();
+        for(Method method:methods){
+            methodList.add(method.getName());
+        }
+        Collections.sort(methodList);
+        for(String name: methodList){
+            System.out.println(name);
+        }
+    }
+}
 
 
         </code></pre>

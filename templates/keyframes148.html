@@ -1,77 +1,98 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
-
-
-		
+<pre class="language-java"><code>
 
 
 
-# Eye and Identity
-
-# identity
-# The identity tool returns an identity array. An identity array is a square matrix with all the main diagonal elements as 1 and the rest
-# as 0. The default type of elements is float.
-
-# import numpy
-# print numpy.identity(3) #3 is for  dimension 3 X 3
-
-# Output
-# [[ 1.  0.  0.]
-#  [ 0.  1.  0.]
-#  [ 0.  0.  1.]]
-
-# eye
-# The eye tool returns a 2-D array with 1's as the diagonal and 0's elsewhere. The diagonal can be main, upper or lower depending on the
-# optional parameter k. A positive k is for the upper diagonal, a negative k is for the lower, and a 0 k (default) is for the main
-# diagonal.
-
-# import numpy
-# print numpy.eye(8, 7, k = 1)    # 8 X 7 Dimensional array with first upper diagonal 1.
-
-#Output
-# [[ 0.  1.  0.  0.  0.  0.  0.]
-#  [ 0.  0.  1.  0.  0.  0.  0.]
-#  [ 0.  0.  0.  1.  0.  0.  0.]
-#  [ 0.  0.  0.  0.  1.  0.  0.]
-#  [ 0.  0.  0.  0.  0.  1.  0.]
-#  [ 0.  0.  0.  0.  0.  0.  1.]
-#  [ 0.  0.  0.  0.  0.  0.  0.]
-#  [ 0.  0.  0.  0.  0.  0.  0.]]
-
-# print numpy.eye(8, 7, k = -2)   # 8 X 7 Dimensional array with second lower diagonal 1.
-
-# Task
-# Your task is to print an array of size NxM with its main diagonal elements as 1's and 0's everywhere else.
-
-# Input Format
-# A single line containing the space separated values of N and M. 
-# N denotes the rows. 
-# M denotes the columns.
-
-# Output Format
-# Print the desired NxM array.
-
-# Sample Input
-# 3 3
-
-# Sample Output
-# [[ 1.  0.  0.]
-#  [ 0.  1.  0.]
-#  [ 0.  0.  1.]]
 
 
-import numpy
 
-N_M = map(int, raw_input().split())
-print numpy.eye(N_M[0], N_M[1], k = 0)
+
+
+/* Java 1D Array
+
+Array is a very simple data structure which is used to store a collection of
+data, for example roll number  of all the students in a class or name of all the
+countries in the world. To create an array of integer  that can hold 10 values,
+you can write code like this:
+
+int[] myList = new int[10]; This problem will test your knowledge on java array.
+You are given an array of n integers. A sub-array is "Negative" if sum of all
+the integers in that sub-array is negative. Count the number of "Negative sub-
+arrays" in the input array.
+
+Note: Subarrays are contiguous chunks of the main array. For example if the
+array is {1,2,3,5} then some of the subarrays are {1}, {1,2,3}, {2,3,5},
+{1,2,3,5} etc. But {1,2,5} is not an subarray as it is not contiguous.
+
+Input Format
+
+The first line consists an integer n. The next line will contain n space
+separated integers. Value of n will be at most 100. The numbers in the array
+will range between -10000 to 10000.
+
+Output Format
+
+Print the answer to the problem.
+
+Sample Input
+
+5 1 -2 4 -5 1 Sample Output
+
+9
+
+Explanation
+
+These are the ranges of the 9 negative subarrays in this sample:
+
+[0:1]
+[0:3]
+[0:4]
+[1:1]
+[1:3]
+[1:4]
+[2:3]
+[3:3]
+[3:4]
+Assume that the index is 0 based.
+*/
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Java1DArray {
+
+    public static void main(String[] args) {
+       
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int[]numbers = new int[num];
+        for(int i = 0;i&ltnum;i++){
+            numbers[i]=sc.nextInt();
+        }
+        int count = 0;
+        for(int i = 0;i&ltnum;i++){
+            int sum = numbers[i];
+            if(sum&lt0) count++;
+            for(int j = i+1;j&ltnum;j++){
+                sum+=numbers[j];
+                if(sum&lt0) count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
+
 
 
         </code></pre>

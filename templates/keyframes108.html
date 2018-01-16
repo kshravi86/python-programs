@@ -1,70 +1,116 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
-
-
+<pre class="language-java"><code>
 
 
-# Polynomials
-
-# poly
-# The poly tool returns the coefficients of a polynomial with the given sequence of roots.
-# print numpy.poly([-1, 1, 1, 10])        #Output : [  1 -11   9  11 -10]
-
-# roots
-# The roots tool returns the roots of a polynomial with the given coefficients.
-# print numpy.roots([1, 0, -1])           #Output : [-1.  1.]
-
-# polyint
-# The polyint tool returns an antiderivative (indefinite integral) of a polynomial.
-# print numpy.polyint([1, 1, 1])          #Output : [ 0.33333333  0.5         1.          0.        ]
-
-# polyder
-# The polyder tool returns the derivative of the specified order of a polynomial.
-# print numpy.polyder([1, 1, 1, 1])       #Output : [3 2 1]
-
-# polyval
-# The polyval tool evaluates the polynomial at specific value.
-# print numpy.polyval([1, -2, 0, 2], 4)   #Output : 34
-
-# polyfit
-# The polyfit tool fits a polynomial of a specified order to a set of data using a least-squares approach.
-# print numpy.polyfit([0,1,-1, 2, -2], [0,1,1, 4, 4], 2)
-#Output : [  1.00000000e+00   0.00000000e+00  -3.97205465e-16]
-
-# The functions polyadd, polysub, polymul, and polydiv also handle proper addition, subtraction, multiplication, and division of
-# polynomial coefficients, respectively.
-
-# Task
-# You are given the coefficients of a polynomial P. 
-# Your task is to find the value of P at point x.
-
-# Input Format
-# The first line contains the space separated value of the coefficients in P. 
-# The second line contains the value of x.
-
-# Output Format
-# Print the desired value.
-
-# Sample Input
-# 1.1 2 3
-# 0
-
-# Sample Output
-# 3.0
 
 
-import numpy
 
-P = map(float, raw_input().split())
-print numpy.polyval(P, int(raw_input()))
 
-  </code></pre>
+
+
+/*
+Tag Content Extractor
+
+In a tag based language, like XML or HTML, contents are enclosed by a start tag and an end tag. For example:
+
+&lttag&gtcontents&lt/tag&gt
+In this problem, you will be given a text in a tag based language. Your task is to parse this text and retrieve 
+the contents which are enclosed by well organized tag sequences. Well organized tags maintain the following constraints:
+
+The name of the start and end tag must be same. The following HTML code is not valid:
+
+&lth1&gtHello World&lt/h2&gt
+Tag can be nested, but there will be no content in between the nested tags. The following code is not valid:
+
+<h1><a>contents</a>invalid</h1>
+Tags can consist of any printable characters.
+
+Input Format
+
+The first line of input contains a single integer N, representing the number of lines. The next N lines 
+contains a line of text.
+
+Constraints
+
+1&lt=N&lt=100
+Each line contains at most 104 printable characters. The total number of characters in all test cases will not exceed 106.
+
+Output Format
+
+For each line, print the valid content enclosed by proper tags. If there is multiple valid content in a test case, 
+print out each of the valid content on separate lines. If no valid content is found in a test case, print "None" without quotes.
+
+Sample Input
+
+4
+&lth1&gtNayeem loves counseling&lt/h1&gt
+&lth1&lth1&gtSanjay has no watch&lt/h1&gt&lt/h1&gt&ltpar&gtSo wait for a while&ltpar&gt
+&ltAmee&gtsafat codes like a ninja&lt/amee&gt
+&ltSA premium&gtImtiaz has a secret crush&lt/SA premium&gt
+
+Sample Output
+
+Nayeem loves counseling
+Sanjay has no watch
+So wait for a while
+None
+Imtiaz has a secret crush
+*/
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class TagContentExtractor{
+   
+   public static void main(String[] args){
+   	
+       Scanner in = new Scanner(System.in);
+       int testCases = Integer.parseInt(in.nextLine());
+       String regexPatern = "(&lt[^&gt]*>)";
+       Pattern stringPatern  = Pattern.compile(regexPatern);
+      	while(testCases>0){
+      		String line = in.nextLine();
+          	int pos = 0;
+          	Matcher m = stringPatern.matcher(line);
+          	String previousHTMLTag = null;
+          	int previousTagPos = -1;
+          	boolean didFind = false;
+          	while(m.find())
+          	{	
+              	String htmlTag = line.substring(m.start(),m.end());
+              	if(htmlTag.charAt(1) != '/')
+              	{
+	            	previousHTMLTag = htmlTag;
+	               	previousTagPos = m.end();
+              	}else if(htmlTag.charAt(1) == '/' && previousHTMLTag != null){
+                  	if(previousHTMLTag.substring(1).equals(htmlTag.substring(2))&&previousHTMLTag.length()>2 && m.start()>previousTagPos+1){
+                    	System.out.println(line.substring(previousTagPos,m.start()));
+                      	didFind = true;
+                  	}
+                	previousHTMLTag = null;
+              	}
+                  
+          	}
+          	System.out.print(didFind?"":"None\n");
+          	testCases--;
+        }
+          
+    }
+}
+
+
+        </code></pre>
   </body>
 </html>		

@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
-	
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+<pre class="language-java"><code>
 
 
 
 
 
-"""
-John has discovered various rocks. Each rock is composed of various elements, and each element is represented by a
-lowercase latin letter from 'a' to 'z'. An element can be present multiple times in a rock. An element is called a
-'gem-element' if it occurs at least once in each of the rocks.
+/** Time Conversion
 
-Given the list of N rocks with their compositions, display the number of gem-elements that exist in those rocks.
+You are given time in AM/PM format. Convert this into a 24 hour format.
+
+Note Midnight is 12:00:00AM or 00:00:00 and 12 Noon is 12:00:00.
 
 Input Format
-The first line consists of N, the number of rocks.
-Each of the next N lines contain rocks' composition. Each composition consists of lowercase letters of English alphabet.
-"""
+
+Input consists of time in the AM/PM format i.e. hh:mm:ssAM or hh:mm:ssPM 
+where 
+01≤hh≤12 
+00≤mm≤59 
+00≤ss≤59
+
+Output Format
+
+You need to print the time in 24 hour format i.e. hh:mm:ss 
+where 
+00≤hh≤23 
+00≤mm≤59 
+00≤ss≤59
+*/
 
 
 
-class Solution(object):
-    def solve(self, cipher):
-        """
-        main solution function
-        :param cipher: the cipher
-        """
-        return len(reduce(lambda x, y: x & y, [set(list(elt)) for elt in cipher]))
+import java.io.*;
+import java.util.*;
+
+public class TimeConversion {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        String[] time = sc.nextLine().split(":");
+        
+        String hours = time[0];
+        String minutes = time[1];
+        String seconds = time[2].substring(0,2);
+        String dayEve = time[2].substring(2,4);
+        if(dayEve.equals("AM")){
+            System.out.println((hours.equals("12")?"00":hours) +":"+minutes+":"+seconds);
+        }else{
+            System.out.println((hours.equals("12")?hours:(Integer.parseInt(hours)+12))+":"+minutes+":"+seconds);
+        }
+    }
+}
 
 
-if __name__ == "__main__":
-    import sys
-
-    f = open("1.in", "r")
-    # f = sys.stdin
-    number = int(f.readline().strip())
-    cipher = []
-    for t in xrange(number):
-        # construct cipher
-        cipher.append(f.readline().strip())
-
-    # solve
-    s = "%s\n" % (Solution().solve(cipher))
-    print s,
-    
-    
-    </code></pre>
+ </code></pre>
   </body>
 </html>		
-    

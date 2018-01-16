@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +6,7 @@
   <body style="background-color:white;" >
 	<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
+	<pre class="language-java"><code>
 
 
 		
@@ -15,41 +14,84 @@
 
 
 
+/* Java Method Overriding 
+
+When a subclass inherits a superclass, it can override methods of the superclass. Consider the following Sports class:
+
+class Sports{
+
+   String get_name()
+   {
+      return "Generic Sports";
+   }
+   void get_number_of_team_members()
+   {
+       System.out.println("Each team has n players in "+get_name());
+   }
+}
+Now we want to create a Soccer class that inherits the Sports class. We can override the get_name 
+method and return a different string.
+
+class Sports{
+
+   String get_name()
+   {
+      return "Soccer Class";
+   }
+
+}
+Note that to override a method, the parameters and return type of the new method should be exactly same as the old method.
+
+Your task is simple, you are given a partially completed code in the editor, complete the code so that 
+it prints the following lines:
+
+Generic Sports
+Each team has n players in Generic Sports
+Soccer Class
+Each team has 11 players in Soccer Class
 
 
+*/
 
-# itertools.combinations()
+import java.util.*;
+class Sports{
 
-# itertools.combinations(iterable, r) 
-# This tool returns the r length subsequences of elements from the input iterable.
+   String get_name()
+   {
+      return "Generic Sports";
+   }
+   void get_number_of_team_members()
+   {
+      System.out.println("Each team has n players in "+get_name());
+   }
+}
 
-# Combinations are emitted in lexicographic sorted order. So, if the input iterable is sorted, the combination tuples will be produced in
-# sorted order.
+class Soccer extends Sports
+{
+   String get_name()
+   {
+      return "Soccer Class";
+   }
+    void get_number_of_team_members()
+   {
+      System.out.println("Each team has 11 players in "+get_name());
+   }
+}
+public class JavaMethodOverriding
+{
+   
+   public static void main(String []args)
+   {
+      Sports C1=new Sports();
+      Soccer C2=new Soccer();
+      System.out.println(C1.get_name());
+      C1.get_number_of_team_members();
+      System.out.println(C2.get_name());
+      C2.get_number_of_team_members();
+   }
+}
 
-# Task
-# You are given a string S. 
-# Your task is to print all possible combinations, up to size k, of the string in lexicographic sorted order.
 
-# Input Format
-# A single line containing the string S and integer value k separated by a space.
-
-# Constraints
-# 0 < k <= len(S)
-# The string contains only UPPERCASE characters.
-
-# Output Format
-# Print the different combinations of string S on separate lines.
-
-
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-from itertools import combinations
-
-a = raw_input().split()
-
-for i in range(1, int(a[1]) + 1):
-    for j in combinations(sorted(a[0]), i):
-        print ''.join(j)
-        
-     </code></pre>
+        </code></pre>
   </body>
-</html>		   
+</html>		

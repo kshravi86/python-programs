@@ -1,77 +1,111 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
 
-	<pre class="language-python"><code>
-
-
-		
+<pre class="language-java"><code>
 
 
 
 
-# Shape and Reshape
 
-# shape
 
-# The shape tool gives a tuple of array dimensions and can be used to change the dimensions of an array.
+/* Java Stack
 
-# (a). Using shape to get array dimensions
+Problem Statement
 
-# import numpy
+In computer science, a stack or LIFO (last in, first out) is an abstract data type that serves as a 
+collection of elements, with two principal operations: push, which adds an element to the collection, and 
+pop, which removes the last element that was added.(Wikipedia)
+A string containing only parentheses is balanced if the following is true: 1. if it is an empty string 2. 
+if A and B are correct, AB is correct, 3. if A is correct, (A) and {A} and [A] are also correct.
 
-# my__1D_array = numpy.array([1, 2, 3, 4, 5])
-# print my_1D_array.shape     #(5,) -> 5 rows and 0 columns
+Examples of some correctly balanced strings are: "{}()", "[{()}]", "({()})" 
 
-# my__2D_array = numpy.array([[1, 2],[3, 4],[6,5]])
-# print my_2D_array.shape     #(3, 2) -> 3 rows and 2 columns 
+Examples of some unbalanced strings are: "{}(", "({)}", "[[", "}{" etc.
 
-# (b). Using shape to change array dimensions
+Given a string, determine if it is balanced or not.
 
-# import numpy
+Input Format
 
-# change_array = numpy.array([1,2,3,4,5,6])
-# change_array.shape = (3, 2)
-# print change_array      
+There will be multiple lines in the input file, each having a single non-empty string. You should read input till end-of-file.
 
-#Output
-# [[1 2]
-# [3 4]
-# [5 6]]
+The part of the code that handles input operation is already provided in the editor.
 
-# reshape
-# The reshape tool gives a new shape to an array without changing its data. It creates a new array and does not modify the original
-# array itself.
+Output Format
 
-# import numpy
+For each case, print 'true' if the string is balanced, 'false' otherwise.
 
-# my_array = numpy.array([1,2,3,4,5,6])
-# print numpy.reshape(my_array,(3,2))
+Sample Input
 
-#Output
-# [[1 2]
-# [3 4]
-# [5 6]]
+{}()
+({()})
+{}(
+[]
 
-# Task
+Sample Output
 
-# You are given a space separated list of nine integers. Your task is to convert this list into a 3X3 NumPy array.
+true
+true
+false
+true
+*/
 
-# Input Format
-# A single line of input containing 9 space separated integers.
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.util.ArrayList;
 
-# Output Format
-# Print the 3X3 NumPy array.
+public class JavaStack {
 
-import numpy
+    static boolean isBallanced(String paranString)
+    {
+        List<String>closingParan =  Arrays.asList("}", ")", "]");
+        boolean isBallanced = true;
+        ArrayList<String> stack = new ArrayList<String>();
+        if(paranString.length()>0){
+            for(int i = 0;i<paranString.length();i++){
+                String paran = paranString.substring(i,i+1); 
+                if(stack.size() == 0 && closingParan.contains(paran)){
+                    isBallanced=false;
+                    break;
+                }else{
+                    if(paran.equals("{") || paran.equals("(") || paran.equals("[")){
+                        stack.add(paran);
+                    }else{
+                        String stackParan = stack.get(stack.size()-1);
+                        if((stackParan.equals("{") && paran.equals("}")) || (stackParan.equals("(") && paran.equals(")") || (stackParan.equals("[") && paran.equals("]")))) {
+                            stack.remove(stack.size()-1);
+                        }else{
+                            isBallanced = false;
+                            break;
+                        }
+                    }
+                }
+            }  
+        }
+        if(stack.size()>0) isBallanced = false;
+        return isBallanced;    
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            if(isBallanced(sc.nextLine())){
+                System.out.println("true");
+            }else{
+                System.out.println("false");
+            }       
+        }
+        
+    }
+}
 
-lis = numpy.array(raw_input().split(' '), int)
-print lis.reshape(3, 3)
 
-</code></pre>
+        </code></pre>
   </body>
 </html>		

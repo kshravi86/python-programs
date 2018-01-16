@@ -1,70 +1,61 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="prism.css" rel="stylesheet">
-  </head>
-  <body style="background-color:white;" >
-	<script type="text/javascript" src="prism.js"></script>
-	
-	<pre class="language-python"><code>
+<head>
+<link href="prism.css" rel="stylesheet">
+</head>
+<body style="background-color:white;" >
+<script type="text/javascript" src="prism.js"></script>
+
+<pre class="language-java"><code>
 
 
 
-"""
-You and your K-1 friends want to buy N flowers. Flower number i has cost ci. Unfortunately the seller does not want just
- one customer to buy a lot of flowers, so he tries to change the price of flowers for customers who have already bought
- some flowers. More precisely, if a customer has already bought x flowers, he should pay (x+1)*ci dollars to buy flower
- number i.
-You and your K-1 friends want to buy all N flowers in such a way that you spend the least amount of money. You can buy
-the flowers in any order.
 
-Input:
+/* Staircase
+Your teacher has given you the task to draw the structure of a staircase. Being an expert programmer, you decided to make a program for the same. You are given the height of the staircase. You need to print a staircase as shown in the example.
 
-The first line of input contains two integers N and K (K <= N). The next line contains N space separated positive
-integers c1,c2,...,cN.
+Input Format
 
-Output:
+You are given an integer N depicting the height of the staircase.
 
-Print the minimum amount of money you (and your friends) have to pay in order to buy all N flowers.
-"""
+Constraints 
+1≤N≤100
+Output Format
 
+Draw a staircase of height N in the format given below.
 
+For example:
 
-class Solution(object):
-    def solve(self, cipher):
-        """
-        Array math
+     #
+    ##
+   ###
+  ####
+ #####
+######
+Staircase of height 6, note that last line has 0 spaces before it.
+*/
 
-        Sort the costs
-        Group the costs
-        :param cipher: the cipher
-        """
-        N, K, C = cipher
+import java.io.*;
+import java.util.*;
 
-        C.sort(reverse=True)
+public class Solution {
 
-        group_cnt = N / K + 1  # 1 is the last remaining group
-        total_cost = 0
-        for i in xrange(group_cnt):
-            unit_cost = i + 1
-            total_cost += unit_cost * sum(C[i * K:(i + 1) * K])
-        return total_cost
-
-
-if __name__ == "__main__":
-    import sys
-
-    f = open("1.in", "r")
-    # f = sys.stdin
-    N, K = map(int, f.readline().strip().split(' '))
-    C = map(int, f.readline().strip().split(' '))
-    cipher = N, K, C
-    # solve
-    s = "%s\n" % (Solution().solve(cipher))
-    print s,
+    public static void main(String[] args) {
     
-    
-    
-     </code></pre>
+        Scanner sc = new Scanner(System.in);
+        int num  = Integer.parseInt(sc.nextLine());
+        for(int j=0;j&ltnum;j++){
+            for(int i=1;i&lt=num;i++){
+                System.out.print(i&ltnum-j?" ":"#");
+            }
+            System.out.println("");
+        }
+        
+    }
+}
+
+
+ </code></pre>
   </body>
 </html>		
