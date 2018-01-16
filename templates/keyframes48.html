@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+
+# -*- coding: utf-8 -*-
+"""
+Problem Statement
+
+Martha is interviewing at Subway. One of the rounds of the interview requires her to cut a bread of size l×b into
+smaller identical pieces such that each piece is a square having maximum possible side length with no left over piece of
+bread.
+
+Input format
+The first line contains an integer T. T lines follow. Each line contains two space separated integers l and b which
+denote length and breadth of the bread.
+
+Output format
+
+T lines, each containing an integer that denotes the number of squares of maximum size, when the bread is cut as per
+the given condition.
+"""
 
 
-public class Executors1 {
 
-    public static void main(String[] args) {
-        test1(3);
-//        test1(7);
-    }
+class Solution(object):
+    def solve(self, cipher):
+        """
+        gcd
+        :param cipher: the cipher
+        """
+        l, b = cipher
+        r = self.gcd(l, b)
+        return (l * b) / (r * r)
 
-    private static void test1(long seconds) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.submit(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(seconds);
-                String name = Thread.currentThread().getName();
-                System.out.println("task finished: " + name);
-            }
-            catch (InterruptedException e) {
-                System.err.println("task interrupted");
-            }
-        });
-        stop(executor);
-    }
-
-    static void stop(ExecutorService executor) {
-        try {
-            System.out.println("attempt to shutdown executor");
-            executor.shutdown();
-            executor.awaitTermination(5, TimeUnit.SECONDS);
-        }
-        catch (InterruptedException e) {
-            System.err.println("termination interrupted");
-        }
-        finally {
-            if (!executor.isTerminated()) {
-                System.err.println("killing non-finished tasks");
-            }
-            executor.shutdownNow();
-            System.out.println("shutdown finished");
-        }
-    }
-}
+    def gcd(self, a, b):
+        while b:
+            a, b = b, a % b
+        return a
 
 
- </code></pre>
+if __name__ == "__main__":
+    import sys
+
+    f = open("1.in", "r")
+    # f = sys.stdin
+    testcases = int(f.readline().strip())
+
+    for t in xrange(testcases):
+        # construct cipher
+        cipher = map(int, f.readline().strip().split(' '))
+
+        # solve
+        s = "%s\n" % (Solution().solve(cipher))
+        print s,
+        
+        
+           </code></pre>
   </body>
 </html>		
+    

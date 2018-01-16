@@ -1,82 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
+
+"""
+You have a record of N students. Each record contains the student's name, 
+and their percent marks in Maths, Physics and Chemistry. 
+The marks can be floating values. The user enters some integer N 
+followed by the names and marks for NN students. You are required to 
+save the record in a dictionary data type. The user then enters a student's name. 
+Output the average percentage marks obtained by that student, correct to two decimal places.
+
+Input Format:
+The first line contains the integer N, the number of students. 
+The next N lines contains the name and marks obtained by that student 
+separated by a space. The final line contains the name of a particular student previously listed.
+
+Output Format:
+Print one line: The average of the marks obtained by the particular student correct to 2 decimal places.
+
+Constraints 
+2 <= N <= 10 
+0 <= Marks <= 100
+
+Sample Input:
+
+3
+Krishna 67 68 69
+Arjun 70 98 63
+Malika 52 56 60
+Malika
+
+Sample Output:
+
+56.00
+"""
+
+import sys
+
+def query_records():
+    results = {}
+    num_students = int(raw_input())
+    for i in range(num_students):
+        info = raw_input()
+        results[info[:info.find(' ')]] = map(float, info[info.find(' ') + 1:].split(' '))
+    student = raw_input()
+    return "%0.2f" % ((sum(results[student]) + 0.0) / len(results[student]))
+         
+        
+        
+print query_records()
 
 
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
-
-public class Atomic1 {
-
-    private static final int NUM_INCREMENTS = 1000;
-
-    private static AtomicInteger atomicInt = new AtomicInteger(0);
-
-    public static void main(String[] args) {
-        testIncrement();
-        testAccumulate();
-        testUpdate();
-    }
-
-    private static void testUpdate() {
-        atomicInt.set(0);
-
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-
-        IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> {
-                    Runnable task = () ->
-                            atomicInt.updateAndGet(n -> n + 2);
-                    executor.submit(task);
-                });
-
-        ConcurrentUtils.stop(executor);
-
-        System.out.format("Update: %d\n", atomicInt.get());
-    }
-
-    private static void testAccumulate() {
-        atomicInt.set(0);
-
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-
-        IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> {
-                    Runnable task = () ->
-                            atomicInt.accumulateAndGet(i, (n, m) -> n + m);
-                    executor.submit(task);
-                });
-
-        ConcurrentUtils.stop(executor);
-
-        System.out.format("Accumulate: %d\n", atomicInt.get());
-    }
-
-    private static void testIncrement() {
-        atomicInt.set(0);
-
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-
-        IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> executor.submit(atomicInt::incrementAndGet));
-
-        ConcurrentUtils.stop(executor);
-
-        System.out.format("Increment: Expected=%d; Is=%d\n", NUM_INCREMENTS, atomicInt.get());
-    }
-
-}
-
-</code></pre>
+        </code></pre>
   </body>
 </html>		

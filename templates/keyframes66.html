@@ -1,191 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
-<pre class="language-java"><code>
 
-import java.util.Arrays;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
-public class Streams10 {
 
-    static class Person {
-        String name;
-        int age;
+"""
+You are given two strings, AA and BB. Find if there is a substring that appears in both A and B.
 
-        Person(String name, int age) {
-            this.name = name;
-            this.age = age;
-        }
+Input Format:
 
-        @Override
-        public String toString() {
-            return name;
-        }
-    }
+Several test cases will be given to you in a single file. 
+The first line of the input will contain a single integer T, the number of test cases.
 
-    public static void main(String[] args) {
-        List<Person> persons =
-            Arrays.asList(
-                new Person("Max", 18),
-                new Person("Peter", 23),
-                new Person("Pamela", 23),
-                new Person("David", 12));
+Then there will be T descriptions of the test cases. 
+Each description contains two lines. The first line contains the 
+string A and the second line contains the string B.
 
-//        test1(persons);
-//        test2(persons);
-//        test3(persons);
-//        test4(persons);
-//        test5(persons);
-//        test6(persons);
-//        test7(persons);
-//        test8(persons);
-        test9(persons);
-    }
+Output Format:
 
-    private static void test1(List<Person> persons) {
-        List<Person> filtered =
-            persons
-                .stream()
-                .filter(p -> p.name.startsWith("P"))
-                .collect(Collectors.toList());
+For each test case, display YES (in a newline), if there is a common substring.
+Otherwise, display NO.
 
-        System.out.println(filtered);    // [Peter, Pamela]
-    }
+Constraints:
 
-    private static void test2(List<Person> persons) {
-        Map<Integer, List<Person>> personsByAge = persons
-            .stream()
-            .collect(Collectors.groupingBy(p -> p.age));
+All the strings contain only lowercase Latin letters.
+1 <= T <= 10
+1 <= |A|, |B| <= 10**5
 
-        personsByAge
-            .forEach((age, p) -> System.out.format("age %s: %s\n", age, p));
+Sample Input:
 
-        // age 18: [Max]
-        // age 23:[Peter, Pamela]
-        // age 12:[David]
-    }
+2
+hello
+world
+hi
+world
 
-    private static void test3(List<Person> persons) {
-        Double averageAge = persons
-            .stream()
-            .collect(Collectors.averagingInt(p -> p.age));
+Sample Output:
 
-        System.out.println(averageAge);     // 19.0
-    }
+YES
+NO
+"""
 
-    private static void test4(List<Person> persons) {
-        IntSummaryStatistics ageSummary =
-            persons
-                .stream()
-                .collect(Collectors.summarizingInt(p -> p.age));
 
-        System.out.println(ageSummary);
-        // IntSummaryStatistics{count=4, sum=76, min=12, average=19,000000, max=23}
-    }
+import sys
 
-    private static void test5(List<Person> persons) {
-        String names = persons
-            .stream()
-            .filter(p -> p.age >= 18)
-            .map(p -> p.name)
-            .collect(Collectors.joining(" and ", "In Germany ", " are of legal age."));
+def format_input():
+    raw_inp = sys.stdin.readlines()[1:]
+    formatted_inp = [s[:s.find('\n')] if '\n' in s else s for s in raw_inp]
+    return formatted_inp
 
-        System.out.println(names);
-        // In Germany Max and Peter and Pamela are of legal age.
-    }
+# First (inefficient) solution:
+def exists_substring_slow(s1, s2):
+    for letter in s1:
+        if letter in s2:
+            return 'YES'
+    return 'NO'
 
-    private static void test6(List<Person> persons) {
-        Map<Integer, String> map = persons
-            .stream()
-            .collect(Collectors.toMap(
-                p -> p.age,
-                p -> p.name,
-                (name1, name2) -> name1 + ";" + name2));
+# Efficient solution:
+def exists_substring(s1, s2):
+    if set(s1).intersection(set(s2)):
+        return 'YES'
+    else:
+        return 'NO'
 
-        System.out.println(map);
-        // {18=Max, 23=Peter;Pamela, 12=David}
-    }
-
-    private static void test7(List<Person> persons) {
-        Collector<Person, StringJoiner, String> personNameCollector =
-            Collector.of(
-                () -> new StringJoiner(" | "),          // supplier
-                (j, p) -> j.add(p.name.toUpperCase()),  // accumulator
-                (j1, j2) -> j1.merge(j2),               // combiner
-                StringJoiner::toString);                // finisher
-
-        String names = persons
-            .stream()
-            .collect(personNameCollector);
-
-        System.out.println(names);  // MAX | PETER | PAMELA | DAVID
-    }
-
-    private static void test8(List<Person> persons) {
-        Collector<Person, StringJoiner, String> personNameCollector =
-            Collector.of(
-                () -> {
-                    System.out.println("supplier");
-                    return new StringJoiner(" | ");
-                },
-                (j, p) -> {
-                    System.out.format("accumulator: p=%s; j=%s\n", p, j);
-                    j.add(p.name.toUpperCase());
-                },
-                (j1, j2) -> {
-                    System.out.println("merge");
-                    return j1.merge(j2);
-                },
-                j -> {
-                    System.out.println("finisher");
-                    return j.toString();
-                });
-
-        String names = persons
-            .stream()
-            .collect(personNameCollector);
-
-        System.out.println(names);  // MAX | PETER | PAMELA | DAVID
-    }
-
-    private static void test9(List<Person> persons) {
-        Collector<Person, StringJoiner, String> personNameCollector =
-            Collector.of(
-                () -> {
-                    System.out.println("supplier");
-                    return new StringJoiner(" | ");
-                },
-                (j, p) -> {
-                    System.out.format("accumulator: p=%s; j=%s\n", p, j);
-                    j.add(p.name.toUpperCase());
-                },
-                (j1, j2) -> {
-                    System.out.println("merge");
-                    return j1.merge(j2);
-                },
-                j -> {
-                    System.out.println("finisher");
-                    return j.toString();
-                });
-
-        String names = persons
-            .parallelStream()
-            .collect(personNameCollector);
-
-        System.out.println(names);  // MAX | PETER | PAMELA | DAVID
-    }
-}
-
-  </code></pre>
+new = format_input()
+new_len = len(new)
+for i in range(0, new_len, 2):
+    print exists_substring(new[i], new[i + 1])
+    
+    
+        </code></pre>
   </body>
 </html>		

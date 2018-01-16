@@ -1,31 +1,41 @@
-<div class="content" 
-  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
 
-
-  <div style="color:blue;">
-	<br><p style="color:red;"> What is the difference between concern and cross-cutting concern in Spring AOP
-
-
-	</p>
-
-
-
-
-
-
-
-	<br>The Concern is behavior we want to have in a module of an application. A Concern may be defined as a functionality we want to implement.
-	<br>	The cross-cutting concern is a concern which is applicable throughout the application and it affects the entire application. For example, logging, security and data transfer are the concerns which are needed in almost every module of an application, hence they are cross-cutting concerns.
-
-
-
-
-  </div>
+	<pre class="language-python"><code>
 
 
 
 
 
 
+# Dot and Cross
 
-</div>
+# Task
+# You are given two arrays A and B. Both have dimensions of NxN. 
+# Your task is to compute their matrix product.
+
+# Input Format
+# The first line contains the integer N. 
+# The next N lines contains N space separated integers of array A. 
+# The following N lines contains N space separated integers of array B.
+
+# Output Format
+# Print the matrix multiplication of A and B.
+
+
+import numpy
+
+N = int(raw_input())
+A = numpy.array([raw_input().split() for i in range(N)], int)
+B = numpy.array([raw_input().split() for i in range(N)], int)
+print numpy.dot(A, B)
+
+
+ </code></pre>
+  </body>
+</html>		

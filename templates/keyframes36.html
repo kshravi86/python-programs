@@ -1,61 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
+"""
+The Utopian tree goes through 2 cycles of growth every year. The first growth cycle occurs during the monsoon, when it
+doubles in height. The second growth cycle occurs during the summer, when its height increases by 1 meter.
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-
-
-public class Lambda1 {
-
-    public static void main(String[] args) {
-        List<String> names = Arrays.asList("peter", "anna", "mike", "xenia");
-
-        Collections.sort(names, new Comparator<String>() {
-            @Override
-            public int compare(String a, String b) {
-                return b.compareTo(a);
-            }
-        });
-
-        Collections.sort(names, (String a, String b) -> {
-            return b.compareTo(a);
-        });
-
-        Collections.sort(names, (String a, String b) -> b.compareTo(a));
-
-        Collections.sort(names, (a, b) -> b.compareTo(a));
-
-        System.out.println(names);
-
-        names.sort(Collections.reverseOrder());
-
-        System.out.println(names);
-
-        List<String> names2 = Arrays.asList("peter", null, "anna", "mike", "xenia");
-        names2.sort(Comparator.nullsLast(String::compareTo));
-        System.out.println(names2);
-
-        List<String> names3 = null;
-
-        Optional.ofNullable(names3).ifPresent(list -> list.sort(Comparator.naturalOrder()));
-
-        System.out.println(names3);
-    }
-
-}
+Now, a new Utopian tree sapling is planted at the onset of the monsoon. Its height is 1 meter. Can you find the height
+of the tree after N growth cycles?
+"""
 
 
-</code></pre>
+
+class Solution(object):
+    def solve(self, cipher):
+        """
+        main solution function
+        :param cipher: the cipher
+        """
+        N = int(cipher[0])
+        # initial = 1  # wrong var name
+        height = 1  # initialization
+        for cycle in xrange(N):
+            if cycle & 1 == 0:
+                height *= 2
+            else:
+                height += 1
+
+        return height
+
+
+if __name__ == "__main__":
+    import sys
+    # f = open("1.in", "r")
+    f = sys.stdin
+    testcases = int(f.readline().strip())
+
+    for t in xrange(testcases):
+        # construct cipher
+        cipher = f.readline().strip().split(' ')
+
+        # solve
+        s = "%s\n" % (Solution().solve(cipher))
+        print s,
+        
+      </code></pre>
   </body>
 </html>		
+        
+        

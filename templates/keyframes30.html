@@ -1,66 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.stream.IntStream;
+# -*- coding: utf-8 -*-
+"""
+Mark and Jane are very happy after having their first kid. Their son is very fond of toys, so Mark wants to buy some.
+There are N different toys lying in front of him, tagged with their prices, but he has only $K. He wants to maximize the
+number of toys he buys with this money.
 
-public class Synchronized1 {
+Now, you are Mark's best friend and have to help him buy as many toys as possible.
 
-    private static final int NUM_INCREMENTS = 10000;
+Input Format
+The first line contains two integers, N and K, followed by a line containing N space separated integers indicating the
+products' prices.
 
-    private static int count = 0;
-
-    public static void main(String[] args) {
-        testSyncIncrement();
-        testNonSyncIncrement();
-    }
-
-    private static void testSyncIncrement() {
-        count = 0;
-
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-
-        IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> executor.submit(Synchronized1::incrementSync));
-
-        ConcurrentUtils.stop(executor);
-
-        System.out.println("   Sync: " + count);
-    }
-
-    private static void testNonSyncIncrement() {
-        count = 0;
-
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-
-        IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> executor.submit(Synchronized1::increment));
-
-        ConcurrentUtils.stop(executor);
-
-        System.out.println("NonSync: " + count);
-    }
-
-    private static synchronized void incrementSync() {
-        count = count + 1;
-    }
-
-    private static void increment() {
-        count = count + 1;
-    }
-
-}
+Output Format
+An integer that denotes maximum number of toys Mark can buy for his son.
 
 
-       </code></pre>
+
+"""
+
+
+
+class Solution(object):
+    def solve(self, cipher):
+        """
+        1D binpacking
+        main solution function
+        :param cipher: the cipher
+        """
+        n, K, A = cipher
+        A.sort()
+        cnt = 0
+        for elt in A:
+            K -= elt
+            if K >= 0:
+                cnt += 1
+            else:
+                break
+        return cnt
+
+
+if __name__ == "__main__":
+    import sys
+
+    f = open("0.in", "r")
+    # f = sys.stdin
+    solution = Solution()
+    n, K = map(int, f.readline().strip().split(' '))
+
+    # construct cipher
+    A = map(int, f.readline().strip().split(' '))
+
+    cipher = n, K, A
+    # solve
+    s = "%s\n" % (solution.solve(cipher))
+    print s,
+    
+    
+    
+    </code></pre>
   </body>
 </html>		
+    

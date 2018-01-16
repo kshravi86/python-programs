@@ -1,84 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-import java.util.Optional;
-import java.util.function.Supplier;
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-public class Optional2 {
 
-    static class Outer {
-        Nested nested = new Nested();
+"""
+Problem Statement
 
-        public Nested getNested() {
-            return nested;
-        }
-    }
+You are given N sticks, where each stick is of positive integral length. A cut operation is performed on the sticks such
+that all of them are reduced by the length of the smallest stick.
 
-    static class Nested {
-        Inner inner = new Inner();
-
-        public Inner getInner() {
-            return inner;
-        }
-    }
-
-    static class Inner {
-        String foo = "boo";
-
-        public String getFoo() {
-            return foo;
-        }
-    }
-
-    public static void main(String[] args) {
-        test1();
-        test2();
-        test3();
-    }
-
-    public static <T> Optional<T> resolve(Supplier<T> resolver) {
-        try {
-            T result = resolver.get();
-            return Optional.ofNullable(result);
-        }
-        catch (NullPointerException e) {
-            return Optional.empty();
-        }
-    }
-
-    private static void test3() {
-        Outer outer = new Outer();
-        resolve(() -> outer.getNested().getInner().getFoo())
-                .ifPresent(System.out::println);
-    }
-
-    private static void test2() {
-        Optional.of(new Outer())
-                .map(Outer::getNested)
-                .map(Nested::getInner)
-                .map(Inner::getFoo)
-                .ifPresent(System.out::println);
-    }
-
-    private static void test1() {
-        Optional.of(new Outer())
-                .flatMap(o -> Optional.ofNullable(o.nested))
-                .flatMap(n -> Optional.ofNullable(n.inner))
-                .flatMap(i -> Optional.ofNullable(i.foo))
-                .ifPresent(System.out::println);
-    }
-}
+Suppose we have 6 sticks of length
+"""
 
 
-</code></pre>
+
+class Solution(object):
+    def solve(self, cipher):
+        """
+        main solution function
+        :param cipher: the cipher
+        """
+        N, A = cipher
+        A.sort()
+
+        result = []
+        while A:
+            result.append(len(A))
+            A = map(lambda x: x - A[0], A)
+            A = filter(lambda x: x > 0, A)
+
+        return "\n".join(map(str, result))
+
+
+if __name__ == "__main__":
+    import sys
+
+    f = open("1.in", "r")
+    # f = sys.stdin
+    solution = Solution()
+    N = int(f.readline().strip())
+    A = map(int, f.readline().strip().split(' '))
+    cipher = N, A
+
+    # solve
+    s = "%s\n" % (solution.solve(cipher))
+    print s,
+    
+    
+    
+        </code></pre>
   </body>
 </html>		
-     

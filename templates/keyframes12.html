@@ -1,117 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-/**
- * @author Benjamin Winterberg
- */
-public class Streams1 {
-
-    public static void main(String[] args) {
-
-        List<String> stringCollection = new ArrayList<>();
-        stringCollection.add("ddd2");
-        stringCollection.add("aaa2");
-        stringCollection.add("bbb1");
-        stringCollection.add("aaa1");
-        stringCollection.add("bbb3");
-        stringCollection.add("ccc");
-        stringCollection.add("bbb2");
-        stringCollection.add("ddd1");
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-        // filtering
+# -*- coding: utf-8 -*-
+"""
+There are N integers in an array A. All but one integer occur in pairs. Your task is to find out the number that occurs
+only once.
 
-        stringCollection
-                .stream()
-                .filter((s) -> s.startsWith("a"))
-                .forEach(System.out::println);
+Input Format
 
-        // "aaa2", "aaa1"
+The first line of the input contains an integer N indicating number of integers.
+The next line contains N space separated integers that form the array A.
 
+Constraints
 
-        // sorting
-
-        stringCollection
-                .stream()
-                .sorted()
-                .filter((s) -> s.startsWith("a"))
-                .forEach(System.out::println);
-
-        // "aaa1", "aaa2"
-
-
-        // mapping
-
-        stringCollection
-                .stream()
-                .map(String::toUpperCase)
-                .sorted((a, b) -> b.compareTo(a))
-                .forEach(System.out::println);
-
-        // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
-
-
-        // matching
-
-        boolean anyStartsWithA = stringCollection
-                .stream()
-                .anyMatch((s) -> s.startsWith("a"));
-
-        System.out.println(anyStartsWithA);      // true
-
-        boolean allStartsWithA = stringCollection
-                .stream()
-                .allMatch((s) -> s.startsWith("a"));
-
-        System.out.println(allStartsWithA);      // false
-
-        boolean noneStartsWithZ = stringCollection
-                .stream()
-                .noneMatch((s) -> s.startsWith("z"));
-
-        System.out.println(noneStartsWithZ);      // true
-
-
-        // counting
-
-        long startsWithB = stringCollection
-                .stream()
-                .filter((s) -> s.startsWith("b"))
-                .count();
-
-        System.out.println(startsWithB);    // 3
-
-
-        // reducing
-
-        Optional<String> reduced =
-                stringCollection
-                        .stream()
-                        .sorted()
-                        .reduce((s1, s2) -> s1 + "#" + s2);
-
-        reduced.ifPresent(System.out::println);
-        // "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
-
-
-    }
-
-}
+1 <= N < 100
+N % 2 = 1 ( N is an odd number )
+0 <= A[i] <= 100, ∀ i ∈ [1, N]
+"""
 
 
 
-       </code></pre>
+class Solution(object):
+    def solve(self, cipher):
+        """
+        main solution function
+        :param cipher: the cipher
+        """
+        A = cipher
+
+        bit = 0
+        for item in A:
+            bit ^= item
+        return bit
+
+
+if __name__ == "__main__":
+    import sys
+
+    f = open("1.in", "r")
+    # f = sys.stdin
+    N = int(f.readline().strip())
+
+
+    # construct cipher
+    cipher = map(int, f.readline().strip().split(' '))
+
+    # solve
+    s = "%s\n" % (Solution().solve(cipher))
+    print s,
+    
+    
+    
+        </code></pre>
   </body>
 </html>		
-     

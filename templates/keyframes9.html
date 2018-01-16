@@ -1,117 +1,97 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
-
-<pre class="language-java"><code>
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-/**
- * @author Benjamin Winterberg
- */
-public class Streams1 {
-
-    public static void main(String[] args) {
-
-        List<String> stringCollection = new ArrayList<>();
-        stringCollection.add("ddd2");
-        stringCollection.add("aaa2");
-        stringCollection.add("bbb1");
-        stringCollection.add("aaa1");
-        stringCollection.add("bbb3");
-        stringCollection.add("ccc");
-        stringCollection.add("bbb2");
-        stringCollection.add("ddd1");
-
-
-        // filtering
-
-        stringCollection
-                .stream()
-                .filter((s) -> s.startsWith("a"))
-                .forEach(System.out::println);
-
-        // "aaa2", "aaa1"
-
-
-        // sorting
-
-        stringCollection
-                .stream()
-                .sorted()
-                .filter((s) -> s.startsWith("a"))
-                .forEach(System.out::println);
-
-        // "aaa1", "aaa2"
-
-
-        // mapping
-
-        stringCollection
-                .stream()
-                .map(String::toUpperCase)
-                .sorted((a, b) -> b.compareTo(a))
-                .forEach(System.out::println);
-
-        // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
-
-
-        // matching
-
-        boolean anyStartsWithA = stringCollection
-                .stream()
-                .anyMatch((s) -> s.startsWith("a"));
-
-        System.out.println(anyStartsWithA);      // true
-
-        boolean allStartsWithA = stringCollection
-                .stream()
-                .allMatch((s) -> s.startsWith("a"));
-
-        System.out.println(allStartsWithA);      // false
-
-        boolean noneStartsWithZ = stringCollection
-                .stream()
-                .noneMatch((s) -> s.startsWith("z"));
-
-        System.out.println(noneStartsWithZ);      // true
-
-
-        // counting
-
-        long startsWithB = stringCollection
-                .stream()
-                .filter((s) -> s.startsWith("b"))
-                .count();
-
-        System.out.println(startsWithB);    // 3
-
-
-        // reducing
-
-        Optional<String> reduced =
-                stringCollection
-                        .stream()
-                        .sorted()
-                        .reduce((s1, s2) -> s1 + "#" + s2);
-
-        reduced.ifPresent(System.out::println);
-        // "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
-
-
-    }
-
-}
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
 
-       </code></pre>
+"""
+Alice recently started learning about cryptography and found that anagrams are very useful. Two strings are anagrams of
+each other if they have same character set. For example strings "bacdc" and "dcbac" are anagrams, while strings "bacdc"
+and "dcbad" are not.
+
+Alice decides on an encryption scheme involving 2 large strings where encryption is dependent on the minimum number of
+character deletions required to make the two strings anagrams. She need your help in finding out this number.
+
+Given two strings (they can be of same or different length) help her in finding out the minimum number of character
+deletions required to make two strings anagrams. Any characters can be deleted from any of the strings.
+
+Input Format
+Two lines each containing a string.
+"""
+
+
+
+class Solution(object):
+    def solve_MLE(self, cipher):
+        """
+        Memory Limit Exceeds
+        dp
+        dp[i][j] = min(dp[i-1][j], dp[i][j-1])+1 if a[i]!=b[j]
+        dp[i][j] = dp[i-1][j-1] if a[i]==b[j]
+        :param cipher: the cipher
+        """
+        a, b = cipher
+        a, b = list(a), list(b)
+        m = len(a)
+        n = len(b)
+        a.sort()
+        b.sort()
+
+        dp = [[0 for _ in xrange(n + 1)] for _ in xrange(m + 1)]
+        for i in xrange(m + 1):
+            dp[i][0] = i
+        for j in xrange(n + 1):
+            dp[0][j] = j
+        for i in xrange(1, m + 1):
+            for j in xrange(1, n + 1):
+                if a[i - 1] == b[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1]
+                else:
+                    dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + 1
+
+        return dp[-1][-1]
+
+    def solve(self, cipher):
+        """
+        bucket
+        :param cipher: the cipher
+        """
+        a, b = cipher
+        bucket = [0 for _ in xrange(26)]
+        for char in a:
+            bucket[ord(char) - ord('a')] += 1
+        for char in b:
+            bucket[ord(char) - ord('a')] -= 1
+
+        counter = 0
+        for ind, val in enumerate(bucket):
+            counter += abs(val - 0)
+
+        return counter
+
+
+if __name__ == "__main__":
+    import sys
+
+    f = open("1.in", "r")
+    # f = sys.stdin
+    cipher = []
+    cipher.append(f.readline().strip())
+    cipher.append(f.readline().strip())
+
+    s = "%s\n" % (Solution().solve(cipher))
+    print s,
+    
+    
+    
+    
+        </code></pre>
   </body>
 </html>		
-     

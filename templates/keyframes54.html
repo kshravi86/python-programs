@@ -1,88 +1,67 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
 
-<pre class="language-java"><code>
-
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
-public class Executors2 {
-
-    public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
-//        test1();
-//        test2();
-        test3();
-    }
-
-    private static void test3() throws InterruptedException, ExecutionException, TimeoutException {
-        ExecutorService executor = Executors.newFixedThreadPool(1);
-
-        Future<Integer> future = executor.submit(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(2);
-                return 123;
-            }
-            catch (InterruptedException e) {
-                throw new IllegalStateException("task interrupted", e);
-            }
-        });
-
-        future.get(1, TimeUnit.SECONDS);
-    }
-
-    private static void test2() throws InterruptedException, ExecutionException {
-        ExecutorService executor = Executors.newFixedThreadPool(1);
-
-        Future<Integer> future = executor.submit(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-                return 123;
-            }
-            catch (InterruptedException e) {
-                throw new IllegalStateException("task interrupted", e);
-            }
-        });
-
-        executor.shutdownNow();
-        future.get();
-    }
-
-    private static void test1() throws InterruptedException, ExecutionException {
-        ExecutorService executor = Executors.newFixedThreadPool(1);
-
-        Future<Integer> future = executor.submit(() -> {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-                return 123;
-            }
-            catch (InterruptedException e) {
-                throw new IllegalStateException("task interrupted", e);
-            }
-        });
-
-        System.out.println("future done: " + future.isDone());
-
-        Integer result = future.get();
-
-        System.out.println("future done: " + future.isDone());
-        System.out.print("result: " + result);
-
-        executor.shutdownNow();
-    }
-
-}
 
 
-  </code></pre>
+"""
+Given a square matrix of size N × N, calculate the absolute difference between the sums of its diagonals.
+
+Input Format:
+
+The first line contains a single integer, N. The next N lines denote the matrix's rows, 
+with each line containing N space-separated integers describing the columns.
+
+Output Format:
+
+Print the absolute difference between the two sums of the matrix's diagonals as a single integer.
+
+Sample Input:
+
+3
+11 2 4
+4 5 6
+10 8 -12
+
+Sample Output:
+
+15
+"""
+
+
+import sys
+
+# Two different approaches:
+
+def diag_diff1(m):
+    return abs(sum([m[i][i] for i in range(len(m))]) 
+    	- sum([m[::-1][i][i] for i in range(len(m))]))
+
+def diag_diff2(m):
+    first_diag_list = [m[i][i] for i in range(len(m))]
+    second_diag_list = [m[::-1][i][i] for i in range(len(m))]
+    return abs(sum(first_diag_list) - sum(second_diag_list))
+
+def format_input():
+    return [map(int, el.split(' ')) for el in sys.stdin.readlines()[1:]]
+
+
+assert print diag_diff1(format_input()) == print diag_diff2(format_input())
+
+print diag_diff1(format_input())
+print diag_diff2(format_input())
+
+
+
+
+        </code></pre>
   </body>
 </html>		

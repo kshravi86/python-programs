@@ -1,93 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
+	
+	<pre class="language-python"><code>
+	
 
-<div class="content" 
-  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
 
 
-  <div style="color:blue;">
-	<br><p style="color:red;"> What is Spring Java-Based Configuration? Give some annotation example.
-	  
-	</p>
 
+"""
+In this challenge, the user enters a string and a substring. 
+You have to print the number of times that the substring 
+occurs in the given string. 
+String traversal will take place from left to right, not from right to left.
 
+NOTE: String letters are case-sensitive.
 
+Input Format:
+The first line of input contains the original string. The next line contains the substring.
 
+Constraints:
+1 <= len(string) <= 2001 <= len(string) <= 200 
+Each character in the string is an ascii character.
 
-		<br>Java based configuration option enables you to write most of your Spring configuration without XML but with the help of few Java-based annotations.
-	<br>An example is the @Configuration annotation, that indicates that the class can be used by the Spring IoC container as a source of bean definitions. Another example is the@Bean annotated method that will return an object that should be registered as a bean in the Spring application context.
-  </div>
+Output Format:
+Output the integer number indicating the total number of occurrences of the substring in the original string.
 
+Sample Input:
+ABCDCDC
+CDC
 
+Sample Output:
+2
+"""
 
 
+import sys
 
+def get_input():
+    raw_inp = sys.stdin.readlines()
+    form_inp = [s[:s.find('\n')] if '\n' in s else s for s in raw_inp]
+    return form_inp
 
+def find_num_occ(s, sub_s):
+    return len([n for n in xrange(len(s)) if s.find(sub_s, n) == n])
 
+inp = get_input()
+print find_num_occ(inp[0], inp[1])
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
- 
-
-
- 
-
-
- 
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
+        </code></pre>
+  </body>
+</html>		

@@ -1,60 +1,37 @@
-<div class="content" 
-  style="font-family:Times New Roman;font-size:1.5em;background-color:white;" align="center">
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
 
-
-  <div style="color:blue;">
-	<br><p style="color:red;"> @Controller annotation
-	  
-
-	</p>
-
-
-
-
-
-
-	
-	<br>The @Controller annotation indicates that a particular class serves the role of a controller. Spring does not require you to extend any controller base class or reference the Servlet API.
-
-
-
-  </div>
+	<pre class="language-python"><code>
 
 
 
 
+# Min and Max
+
+# Task
+# You are given a 2-D array with dimensions NxM. 
+# Your task is to perform the min function over axis 1 and then find the max of that.
+
+# Input Format
+# The first line of input contains the space separated values of N and M. 
+# The next N lines contains M space separated integers.
+
+# Output Format
+# Compute the min along axis 1 and then print the max of that result.
 
 
+import numpy
+
+N_M = map(int, raw_input().split())
+a = numpy.array([map(int, raw_input().split()) for i in range(N_M[0])])
+print numpy.max(numpy.min(a, axis = 1))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+</code></pre>
+  </body>
+</html>		

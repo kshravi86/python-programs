@@ -1,74 +1,72 @@
 <!DOCTYPE html>
-<html xmlns:ng="http://angularjs.org" lang="en" ng-app="myApp">
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
 
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<html>
   <head>
-    <meta charset="utf-8">
-
+	<meta charset="utf-8" />
 	<meta name="format-detection" content="telephone=no" />
+	<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<title>Code Snippets</title>
 
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
-
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-
-
-	<!-- Use the .min version of bootstrap files in production -->
-	<!-- Use the following if you want to use responsive design -->
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
-
-	<link rel="stylesheet" type="text/css" href="css/mobile-nav.css" />
-	<link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css">
-	<link rel="stylesheet" type="text/css" href="css/prism.css">
-
-
-
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
-    <script src="js/admob.js"></script>
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-
-
-
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="css/all.css"/>
   </head>
-  <body >
+  <body ng-app="App">
 
-	<mobile-view/>
+    <div id="navbar">
+	  <div class="title">
+		HackerRank
+	  </div>
+	  <div class="button home kit-active kit-title-text" click-link="/">Home</div>
+    </div>
 
-
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="js/prism.js"></script>
-
-
-	<!-- In production use min versions -->
-	<script src="lib/jx.min.js"></script>
-	<script src="lib/angular.js"></script>
-	<script src="lib/angular-mobile.js"></script>
-	<script src="lib/mobile-nav.js"></script>
+    <div ng-view id='wrapper'></div>
 
 
+    <script type="text/javascript" src="js/lib/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/lib/hammer.js"></script>
+    <script type="text/javascript" src="js/lib/angular-gestures.js"></script>
+    <script type="text/javascript" src="js/core/app.js"></script>
 
+    <script type="text/javascript" src="js/Controllers/Cube.js"></script>
+    <script type="text/javascript" src="js/Controllers/Transitions.js"></script>
 
-	<script src="js/filters.js"></script>
-	<script src="js/directives.js"></script>
+    <script type="text/javascript" src="js/Directives/dropdownButton.js"></script>
+    <script type="text/javascript" src="js/Directives/clickLink.js"></script>
+    <script type="text/javascript" src="js/Directives/clickLinkBrowser.js"></script>
 
+<script type="text/javascript">
 
+        (function () {
+            var appView = $('html'),
+                    resize;
 
-
+            resize = function () {
+                appView.css('font-size', (appView.width() / 32) + 'px');
+            };
+            document.addEventListener('DOMContentLoaded', resize);
+            window.addEventListener("resize", resize, false);
+        }());
+</script>
 
   </body>
 </html>

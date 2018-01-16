@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="prism.css" rel="stylesheet">
-</head>
-<body style="background-color:white;" >
-<script type="text/javascript" src="prism.js"></script>
+  <head>
+    <link href="prism.css" rel="stylesheet">
+  </head>
+  <body style="background-color:white;" >
+	<script type="text/javascript" src="prism.js"></script>
 
-<pre class="language-java"><code>
-
-import java.util.ArrayList;
-import java.util.List;
-public class Streams2 {
-
-    public static void main(String[] args) {
-
-        List<String> stringCollection = new ArrayList<>();
-        stringCollection.add("ddd2");
-        stringCollection.add("aaa2");
-        stringCollection.add("bbb1");
-        stringCollection.add("aaa1");
-        stringCollection.add("bbb3");
-        stringCollection.add("ccc");
-        stringCollection.add("bbb2");
-        stringCollection.add("ddd1");
+	<pre class="language-python"><code>
 
 
-        // sorting
+		
 
-        stringCollection
-                .stream()
-                .sorted()
-                .forEach(System.out::println);
 
-        System.out.println(stringCollection);
+"""
+Problem Statement
+You are given a number N, you need to print the number of positions where digits exactly divides N.
 
+Input format
+
+The first line contains T (number of test cases followed by T lines each containing N).
+"""
+
+
+
+class Solution(object):
+    def solve(self, cipher):
+        """
+        main solution function
+        :param cipher: the cipher
+        """
+        num = int(cipher)
+        cnt = 0
+        for char in cipher:
+            digit = int(char)
+            if digit == 0: continue
+            if num % digit == 0:
+                cnt += 1
+
+        return cnt
+
+
+if __name__ == "__main__":
+    import sys
+
+    f = open("1.in", "r")
+    # f = sys.stdin
+    testcases = int(f.readline().strip())
+
+    for t in xrange(testcases):
+        # construct cipher
+        cipher = f.readline().strip()
+
+        # solve
+        s = "%s\n" % (Solution().solve(cipher))
+        print s,
         
-
-    }
-
-}
- 
-       </code></pre>
+        
+        
+        
+        </code></pre>
   </body>
 </html>		
-     
