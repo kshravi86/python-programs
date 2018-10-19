@@ -22,12 +22,15 @@ xmlns:gap="http://phonegap.com/ns/1.0"
     <author email="ingalbi@gmail.com" href="http://ingalb.info/">ingalb</author>
     <content src="index.html" />
     <access origin="*" />
+	
+	
+	<preference name="phonegap-version" value="cli-7.1.0" />
 
     
     <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
 
-	<preference name="android-targetSdkVersion" value="26"/>
-	<preference name="android-minSdkVersion" value="26"/> //android 3.0
+	<preference name="android-targetSdkVersion" value="27"/>
+	<preference name="android-minSdkVersion" value="27"/> //android 3.0
 	
 
 	<gap:plugin name="cordova-android-support-gradle-release" source="npm" />
